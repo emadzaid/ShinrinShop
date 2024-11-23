@@ -4,9 +4,9 @@ function App() {
 
   return (
     <>
-      <img src={logo} className='h-24' />
+      <h1>HomeScreen</h1>
     </>
   )
 }
 
-export default App
+export default App;
