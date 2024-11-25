@@ -1,10 +1,17 @@
-import logo from '../public/images/logo.svg'
+import Header from './components/Header';
+import { Outlet } from 'react-router-dom';
+import AppContainer from './utils/AppContainer';
+
 
 function App() {
 
   return (
     <>
-      <h1>HomeScreen</h1>
+      <Header />
+      <AppContainer>
+        <Outlet />
+      </AppContainer>
+
     </>
   )
 }

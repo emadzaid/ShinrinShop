@@ -5,7 +5,20 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['"DM Sans"', 'sans-serif'],
+      },
+    },
+    
   },
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+    require('@tailwindcss/aspect-ratio'),
+
+  ],
+
+  daisyui: {
+    themes: ["light"], 
+  },
 }
