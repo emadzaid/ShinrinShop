@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+
+    .heading-tertiary {
+        @apply text-2xl font-bold
+    }
+
     .logo-text {
         @apply text-2xl uppercase font-light px-2 mx-1
     }
@@ -13,5 +18,9 @@
 
     .navDropDownContent {
         @apply menu bg-base-100 w-96 rounded-box z-[1] px-2 py-8 shadow gap-1
+    }
+
+    .btn-main {
+        @apply bg-neutral-700 hover:bg-neutral-600 text-white uppercase px-4 py-2 rounded transition
     }
 }

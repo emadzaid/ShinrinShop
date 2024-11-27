@@ -1,8 +1,10 @@
+const bcrypt = require('bcrypt');
+
 const users = [
     {
         name: 'admin',
         email: 'admin@gmail.com',
-        password: '123456',
+        password: bcrypt.hashSync("123456",10),
         isAdmin: true,
 
     },
@@ -10,7 +12,7 @@ const users = [
     {
         name: 'emad',
         email: 'emad@gmail.com',
-        password: '123',
+        password: bcrypt.hashSync("123",10),
         isAdmin: false,
 
     }

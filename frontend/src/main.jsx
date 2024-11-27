@@ -7,14 +7,15 @@ import {createBrowserRouter,  createRoutesFromElements, RouterProvider, Route} f
 import store from './store.js';
 import { Provider } from 'react-redux';
 
-import HomeScreen from './screens/HomeScreen.jsx';
+import HomeScreen from './Screens/HomeScreen.jsx';
 import ProductScreen from './screens/ProductScreen.jsx';
-
+import LoginScreen from './screens/LoginScreen.jsx';
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<App />}>
     <Route index={true} path='/' element={<HomeScreen />} />
     <Route path="/collections/:category/:type/:id" element={<ProductScreen />} />
+    <Route path="/login" element={<LoginScreen />} />
   </Route>
 ))
 

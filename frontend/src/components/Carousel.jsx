@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill} from "react-icons/bs";
+import {FaArrowRight, FaArrowLeft} from "react-icons/fa";
 
 
 const Carousel = ({ slides }) => {
@@ -16,7 +16,7 @@ const Carousel = ({ slides }) => {
   };
 
   return (
-    <div className="overflow-hidden relative">
+    <div className="overflow-hidden relative max-h-[500px]">
       <div
         className={`flex transition ease-out duration-40`}
         style={{
@@ -24,16 +24,16 @@ const Carousel = ({ slides }) => {
         }}
       >
         {slides.map((s, index) => {
-          return <img src={s} key={index} />;
+          return <img src={s} key={index} className="object-cover object-top w-full"/>;
         })}
       </div>
 
       <div className="absolute top-0 h-full w-full justify-between items-center flex text-white px-10 text-3xl">
         <button onClick={previousSlide}>
-          <BsFillArrowLeftCircleFill />
+          <FaArrowLeft />
         </button>
         <button onClick={nextSlide}>
-          <BsFillArrowRightCircleFill />
+          <FaArrowRight />
         </button>
       </div>
 

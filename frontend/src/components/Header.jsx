@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Cart from "./Cart";
 
 const Header = () => {
+
+  const {cartItems} = useSelector((state) => state.cart);
+  const {totalPrice, shippingPrice, itemsPrice} = useSelector((state) => state.cart);
+
+
 return (
     <div>
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -64,7 +71,8 @@ return (
           <div className="flex-none lg:block">
             <ul className="menu-horizontal items-center gap-4 mr-2">
               {/* Navbar menu content here */}
-              <li className='cursor-pointer'><a>
+              <li className='cursor-pointer'>
+                <Link to={'/login'}>
 
                   <svg
                   fill="#000000"
@@ -85,21 +93,56 @@ return (
                   </g>
                   </svg>
 
-              </a></li>
+              </Link></li>
 
-              <li className='cursor-pointer'><a>
-                <svg
-                  className="h-8"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                  <g id="SVGRepo_iconCarrier">
-                    <path d="M20.232 10.5257C19.6468 7.40452 19.3542 5.84393 18.2433 4.92196C17.1324 4 15.5446 4 12.369 4H11.6479C8.47228 4 6.8845 4 5.7736 4.92196C4.66271 5.84393 4.37009 7.40452 3.78487 10.5257C2.96195 14.9146 2.55049 17.1091 3.75011 18.5545C4.94973 20 7.18244 20 11.6478 20H12.369C16.8344 20 19.0672 20 20.2668 18.5545C20.9628 17.7159 21.1165 16.6252 20.9621 15" stroke="#1C274C" strokeWidth="1.5" strokeLinecap="round"></path> 
-                    <path d="M9.1709 8C9.58273 9.16519 10.694 10 12.0002 10C13.3064 10 14.4177 9.16519 14.8295 8" stroke="#1C274C" strokeWidth="1.5" strokeLinecap="round"></path>
-                  </g>
-                </svg>
-              </a></li>
+              <li>
+    
+                {/* CART DRAWER */}
+
+                <div className="drawer drawer-end z-[1]">
+                  <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+                  <div className="drawer-content">
+                    {/* Page content here */}
+                    <label htmlFor="my-drawer-4" className="drawer-button cursor-pointer">
+                      <svg
+                      className="h-8"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                      <g id="SVGRepo_iconCarrier">
+                        <path d="M20.232 10.5257C19.6468 7.40452 19.3542 5.84393 18.2433 4.92196C17.1324 4 15.5446 4 12.369 4H11.6479C8.47228 4 6.8845 4 5.7736 4.92196C4.66271 5.84393 4.37009 7.40452 3.78487 10.5257C2.96195 14.9146 2.55049 17.1091 3.75011 18.5545C4.94973 20 7.18244 20 11.6478 20H12.369C16.8344 20 19.0672 20 20.2668 18.5545C20.9628 17.7159 21.1165 16.6252 20.9621 15" stroke="#1C274C" strokeWidth="1.5" strokeLinecap="round"></path> 
+                        <path d="M9.1709 8C9.58273 9.16519 10.694 10 12.0002 10C13.3064 10 14.4177 9.16519 14.8295 8" stroke="#1C274C" strokeWidth="1.5" strokeLinecap="round"></path>
+                      </g>
+                      </svg>                 
+                    </label>
+                    
+                  </div>
+
+                  <div className="drawer-side">
+                    <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+                    <ul className="p-4 bg-base-200 text-base-content min-h-full w-96">
+                      <li className="border-b border-gray-300 mb-4"> <h3 className="text-2xl py-1">YOUR CART</h3> </li>
+                      {cartItems.length > 0 ? (
+                        <>
+                          {cartItems.map((item, index) => <li key={index}><Cart item={item} /></li>)}
+                          <div className="uppercase flex flex-col items-end text-justify tracking-wider py-4 px-2 gap-2">
+                            <span>Subtotal Price ${`${itemsPrice}`}</span>
+                            <span className="border-b-2 border-gray-500 pb-2">Shipping Price ${`${shippingPrice}`}</span>
+                            <span className="font-bold">Total Price ${`${totalPrice}`}</span>
+                         </div>
+                       
+                       <li className="px-2">
+                          <Link to='/checkout' className="btn-main w-full block text-center">CHECK OUT</Link>
+                       </li>
+                        
+                        </>
+                      ) : (<p>Your cart is empty</p>)}
+
+                    </ul>
+                  </div>
+                </div>
+              </li>
 
             </ul> 
 

@@ -1,3 +1,4 @@
+const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -6,18 +7,23 @@ const express = require('express');
 
 connectDB();
 const app = express();
+const cors = require('cors');
 
-const Product = require('./models/productModel');
+app.use(cors({
+    origin: 'http://localhost:5173' // Frontend URL
+}));
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.get('/', (req,res) => {
-    res.send('Homepage');
-});
+const productRoute = require('./routes/productRoute');
+const userRoute = require('./routes/userRoute');
+const {errorHandler} = require('./middlwares/errorHandler');
+ 
+app.use('/api/collections', productRoute );
+app.use('/api/users', userRoute)
 
-app.get('/api/products', async (req,res) => {
-    const products = await Product.find({});
-    res.status(200).json(products);
-})
+app.use(errorHandler);
 
 const PORT = 8000;
 app.listen(PORT, () => {

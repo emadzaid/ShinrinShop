@@ -14,7 +14,7 @@ export const HomeScreen = () => {
   const {data:womenCollection, isLoading: loadingWomenCollection, error: womenCollectionError} = useGetWomenProductsQuery()
 
 
-  const slides = ['../../public/images/Cherry-blossom-Japanese-kimono-robe.jpg', '../../public/images/Cherry-blossom-Japanese-kimono-robe.jpg', '../../public/images/Cherry-blossom-Japanese-kimono-robe.jpg']
+  const slides = ['../../public/images/Cherry-blossom-Japanese-kimono-robe.jpg', '../../public/images/Kimono-Collection-Banner_2400x.jpg', '../../public/images/Men_s-Samue-Banner-5_1944.jpg']
   
   return (
     <>
