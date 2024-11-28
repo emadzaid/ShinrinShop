@@ -13,6 +13,7 @@ import KimonoSizeGuideModel from "../components/KimonoSizeGuideModel";
 import RobeSizeGuideModel from "../components/RobeSizeGuideModel";
 
 import { addToCart } from "../slices/cartSlice";
+import { toast } from "react-toastify";
 
 const ProductScreen = () => {
 
@@ -46,8 +47,8 @@ const ProductScreen = () => {
 
     const addToCartHandler = (e) => {
         e.preventDefault();
-        console.log('Added to cart')
         dispatch(addToCart({...product, qty, selectedSize: size}));
+        toast.success(`${product.name } added to cart`)
     }
 
   return (

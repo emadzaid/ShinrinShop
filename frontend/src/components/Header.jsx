@@ -1,12 +1,38 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Cart from "./Cart";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { useLogoutUserMutation } from "../slices/userApiSlice";
+import { logout } from "../slices/authSlice";
 
 const Header = () => {
 
   const {cartItems} = useSelector((state) => state.cart);
   const {totalPrice, shippingPrice, itemsPrice} = useSelector((state) => state.cart);
+  const {userInfo} = useSelector((state) => state.auth);
+  
+  const navigate = useNavigate();
+  const dispatch = useDispatch();  
+  const [logoutUserApiCall, {isLoading}] = useLogoutUserMutation();
 
+  const checkoutHandler = async () => {
+    navigate('/login?redirect=/checkout'); 
+  }
+
+  const logoutHandler = async () => {
+    try {
+      await logoutUserApiCall().unwrap();
+      dispatch(logout());
+      // reset cart here
+      navigate('/login')
+
+    } catch (error) {
+      console.log(error);
+    }
+ 
+  }
 
 return (
     <div>
@@ -72,28 +98,43 @@ return (
             <ul className="menu-horizontal items-center gap-4 mr-2">
               {/* Navbar menu content here */}
               <li className='cursor-pointer'>
-                <Link to={'/login'}>
+                {userInfo ? (
 
-                  <svg
-                  fill="#000000"
-                  className='h-6'
-                  version="1.1"
-                  id="Layer_1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                  xmlSpace="preserve"
-                  stroke="#000000"
-                  strokeWidth="11.776">
-                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                  <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                  <g id="SVGRepo_iconCarrier">
-                    <g> <g> <path d="M256,0c-65.733,0-119.211,53.479-119.211,119.211S190.267,238.423,256,238.423s119.211-53.479,119.211-119.211 S321.733,0,256,0z M256,218.024c-54.486,0-98.813-44.328-98.813-98.813S201.515,20.398,256,20.398s98.813,44.328,98.813,98.813 S310.485,218.024,256,218.024z"></path> </g> </g> 
-                    <g> <g> <path d="M426.272,331.529c-45.48-45.48-105.952-70.529-170.272-70.529c-64.32,0-124.791,25.047-170.273,70.529 c-45.48,45.48-70.529,105.952-70.529,170.272c0,5.632,4.566,10.199,10.199,10.199h461.204c5.632,0,10.199-4.567,10.199-10.199 C496.801,437.482,471.752,377.01,426.272,331.529z M35.831,491.602C41.179,374.789,137.889,281.398,256,281.398 s214.821,93.391,220.17,210.204H35.831z"></path> </g> </g>
-                    <g> <g> <path d="M182.644,457.944H66.295c-5.633,0-10.199,4.567-10.199,10.199s4.566,10.199,10.199,10.199h116.349 c5.633,0,10.199-4.567,10.199-10.199S188.277,457.944,182.644,457.944z"></path> </g> </g> <g> <g> <path d="M225.621,457.944h-7.337c-5.633,0-10.199,4.567-10.199,10.199s4.566,10.199,10.199,10.199h7.337 c5.633,0,10.199-4.567,10.199-10.199S231.254,457.944,225.621,457.944z"></path></g> </g>
-                  </g>
-                  </svg>
+                  <div className="dropdown dropdown-hover  dropdown-end">
+                    <div tabIndex={0} role="button" className="m-1 uppercase border-2 border-gray-500 rounded-full px-3 py-1">{userInfo.name[0]}</div>
+                    <ul tabIndex={0} className="dropdown-content menu bg-base-200 rounded-box z-[1] w-52 p-2 shadow">
+                      <li className="border-b uppercase tracking-widest"><Link to='/profile'> My Profile </Link></li>
+                      <li><button className="uppercase tracking-widest" onClick={logoutHandler}>Sign out</button></li>
+                    </ul>
+                  </div>
+                ) : 
+                
+                (<>
+                    <Link to={'/login'}>
+                      <svg
+                      fill="#000000"
+                      className='h-6'
+                      version="1.1"
+                      id="Layer_1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                      xmlSpace="preserve"
+                      stroke="#000000"
+                      strokeWidth="11.776">
+                      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                      <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                      <g id="SVGRepo_iconCarrier">
+                        <g> <g> <path d="M256,0c-65.733,0-119.211,53.479-119.211,119.211S190.267,238.423,256,238.423s119.211-53.479,119.211-119.211 S321.733,0,256,0z M256,218.024c-54.486,0-98.813-44.328-98.813-98.813S201.515,20.398,256,20.398s98.813,44.328,98.813,98.813 S310.485,218.024,256,218.024z"></path> </g> </g> 
+                        <g> <g> <path d="M426.272,331.529c-45.48-45.48-105.952-70.529-170.272-70.529c-64.32,0-124.791,25.047-170.273,70.529 c-45.48,45.48-70.529,105.952-70.529,170.272c0,5.632,4.566,10.199,10.199,10.199h461.204c5.632,0,10.199-4.567,10.199-10.199 C496.801,437.482,471.752,377.01,426.272,331.529z M35.831,491.602C41.179,374.789,137.889,281.398,256,281.398 s214.821,93.391,220.17,210.204H35.831z"></path> </g> </g>
+                        <g> <g> <path d="M182.644,457.944H66.295c-5.633,0-10.199,4.567-10.199,10.199s4.566,10.199,10.199,10.199h116.349 c5.633,0,10.199-4.567,10.199-10.199S188.277,457.944,182.644,457.944z"></path> </g> </g> <g> <g> <path d="M225.621,457.944h-7.337c-5.633,0-10.199,4.567-10.199,10.199s4.566,10.199,10.199,10.199h7.337 c5.633,0,10.199-4.567,10.199-10.199S231.254,457.944,225.621,457.944z"></path></g> </g>
+                      </g>
+                      </svg>
+                    </Link>   
+                </>)}
 
-              </Link></li>
+      
+              
+              </li>
 
               <li>
     
@@ -133,7 +174,7 @@ return (
                          </div>
                        
                        <li className="px-2">
-                          <Link to='/checkout' className="btn-main w-full block text-center">CHECK OUT</Link>
+                          <button onClick={checkoutHandler} className="btn-main w-full block text-center">CHECK OUT</button>
                        </li>
                         
                         </>

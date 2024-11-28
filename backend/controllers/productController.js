@@ -8,7 +8,7 @@ const asyncHandler = require('../middlwares/asyncHandler');
 
 const getAllCollections = asyncHandler (async(req,res) => {
    
-    const products = await Product.find({});
+    const products = await Product.find( {});
     if(products) {
         res.status(200).json(products);
     } else {

@@ -3,7 +3,10 @@ import { BASE_URL } from '../Constants'
 
 const apiSlice = createApi({
 
-    baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
+    baseQuery: fetchBaseQuery({ 
+        baseUrl: BASE_URL,
+        credentials: 'include', // Include cookies in requests
+    }),
     tagTypes: ['Product', 'User', 'Order'],
     endpoints: (builder) => ({})
 })
