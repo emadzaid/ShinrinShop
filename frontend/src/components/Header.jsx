@@ -173,6 +173,10 @@ return (
                             <span className="font-bold">Total Price ${`${totalPrice}`}</span>
                          </div>
                        
+                        <li className="px-2">
+                          <Link to={'/cart'} className="bg-neutral-300 hover:bg-neutral-400 py-2 px-4 w-full block text-center mb-2 transition">VIEW CART</Link>
+                       </li>
+
                        <li className="px-2">
                           <button onClick={checkoutHandler} className="btn-main w-full block text-center">CHECK OUT</button>
                        </li>

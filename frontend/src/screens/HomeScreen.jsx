@@ -21,7 +21,7 @@ export const HomeScreen = () => {
       <Carousel slides={slides} />
       <Container>
         <Section heading={'BestSellers (For Her)'}>
-          {loadingWomenCollection ? (<Loader />) : womenCollectionError ? (<Message error={womenCollectionError?.message} />) : (
+          {loadingWomenCollection ? (<Loader />) : womenCollectionError ? (<Message error={womenCollectionError?.message || womenCollectionError.data?.message} />) : (
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5 gap-3 px-4">
               {womenCollection.map((product) => {
                 return <Product product={product} key={product._id}/>
