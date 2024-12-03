@@ -67,6 +67,11 @@ const productSchema = new mongoose.Schema({
 
     material: {
         type: String,
+    },
+
+    BestSelling: {
+        type: Boolean,
+        default: false,
     }
 
 }, {timestamps: true})

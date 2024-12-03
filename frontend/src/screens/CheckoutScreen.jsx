@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
-import {useSelector} from 'react-redux';
-import { updateShippingAddress } from '../slices/cartSlice';
-import { useCreateOrderMutation } from '../slices/orderApiSlice';
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+import { updateShippingAddress, updatePaymentMethod } from '../slices/cartSlice';
+import { useCreateOrderMutation} from '../slices/orderApiSlice';
 
 import Container from '../utils/Container';
-
+import {toast} from 'react-toastify';
+import { FaPaypal, FaRegMoneyBillAlt  } from 'react-icons/fa';
 
 const CheckoutScreen = () => {
   
@@ -30,28 +32,33 @@ const CheckoutScreen = () => {
     setPostalCode(cart.shippingAddress.postalCode || '');
     setAddress(cart.shippingAddress.address || '');
     setPhone(cart.shippingAddress.phone || '');
+    setPayment(cart.paymentMethod);
   }, [cart.shippingAddress]);
 
-  
-  const [createOrder, {isLoading}] = useCreateOrderMutation();
 
-  const paymentHandler = async () => {
+  const [createOrder, {isLoading:createOrderLoading}] = useCreateOrderMutation();
+  
+  const paymentHandler = async (e) => {
+    e.preventDefault();
     dispatch(updateShippingAddress({ country, city, postalCode, address, phone, payment }));
+    dispatch(updatePaymentMethod(payment));
+
     try {
       const res = await createOrder({
         orderItems: cart.cartItems,
         shippingAddress: { country, city, postalCode, address, phone },
-        paymentMethod: payment || 'COD',
+        paymentMethod: payment,
       }).unwrap();
-      navigate(`/orders/${res._id}`);
-      console.log('PAID');
-    } catch (error) {
-      console.error('Order creation failed:', error);
-      alert('Failed to create order. Please try again.');
+
+      res.paymentMethod === 'PayPal' ? navigate(`/orders/${res._id}/pay`) : navigate(`/orders/${res._id}`);
+
+    } catch (err) {
+      console.log(err)
+      toast.error(`${err?.data?.message || err.error}`);
     }
   }
 
-  return (
+  return ( 
     <Container>
       <div className='grid grid-cols-1 md:grid-cols-2'>
         <div className='flex flex-col gap-4 p-4 mx-auto overflow-y-scroll no-scrollbar max-h-screen order-2 md:order-1'>
@@ -94,18 +101,34 @@ const CheckoutScreen = () => {
               Standard Shipping <span> ${`${cart.shippingPrice}`} </span>
             </span>
 
-            <h3 className='text-xl font-semibold'>Payment Method</h3>
-            {/* PAY NOW BUTTON FOR TESTING ONLY  */}
-            {/* MUST BE REMOVED IN PRODUCTION */}
+            <h3 className='text-xl font-semibold'>How would you like to pay?</h3>
 
-            <button onClick={paymentHandler} className='btn-main'>PAY NOW</button>
+            <form onSubmit={paymentHandler}>
+              <div className="form-control bg-gray-100 rounded-full px-2 mb-4">
+                <label className="label cursor-pointer">
+                  <span className="label-text flex items-center gap-2"> <FaPaypal /> PayPal</span>
+                  <input onChange={(e) => setPayment(e.target.value)} value="PayPal" type="radio" name="radio-10" checked={payment==='PayPal'} className="radio"  />
+                </label>
+              </div>
+
+              <div className="form-control bg-gray-100 rounded-full px-2">
+                <label className="label cursor-pointer">
+                <span className="label-text flex items-center gap-2"> <FaRegMoneyBillAlt /> Cash on Delivery</span>
+                <input onChange={(e) => setPayment(e.target.value)} value="COD" type="radio" name="radio-10" checked={payment==='COD'} className="radio"  />
+                </label>
+              </div>
+
+              <button type='submit' className='btn-main w-full rounded mt-6'> PlACE ORDER</button> 
+            </form>
+
+
         </div>
 
-        <div className='p-4 mx-auto border-l max-md:border-none overflow-y-scroll no-scrollbar max-h-screen order-1 md:order-2'>
+        <div className='p-4 md:mx-auto border-l max-md:border-none overflow-y-scroll no-scrollbar max-h-screen order-1 md:order-2'>
           {cart.cartItems.length === 0 ? (<h1 className='text-xl'>Your cart is empty</h1>) : (
               <ul>
               {cart.cartItems.map((item, index) => {
-                return <li key={index} className='flex flex-row max-md:flex-col items-center gap-4 mb-6'> 
+                return <li key={index} className='flex flex-row max-md:flex-col items-center justify-start gap-4 mb-6'> 
 
                   <div className='relative'>
                     <img width="80" height="150" src={item.image[0]} className='rounded' />

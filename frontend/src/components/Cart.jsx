@@ -15,7 +15,7 @@ const Cart = ({item}) => {
     <>
         <div className="flex flex-col px-2 py-4 gap-3 items-center border-b">
             <Link className="flex items-start gap-4" to={`/collections/${item.category}/${item.type}/${item._id}`}>
-            <img className='h-40 w-34 rounded' src={item.image[0]} /> 
+            <img className='max-h-32 max-w-24 rounded' src={item.image[0]} /> 
             <div className="font-light flex flex-col gap-2">
                 <span className="text-2xl">{item.name}</span>
                 <span className="text-sm font-bold">Type: {item.type}</span>

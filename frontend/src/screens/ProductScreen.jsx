@@ -21,8 +21,8 @@ const ProductScreen = () => {
     const [qty, setQty] = useState(1);
     const [size, setSize] = useState('');
 
-    const { id: productId } = useParams();
-    const {data:product, isLoading, error} = useGetProductByIdQuery(productId);
+    const { category, type, id: productId } = useParams();
+    const {data:product, isLoading, error} = useGetProductByIdQuery({category, type, productId});
 
     const dispatch = useDispatch();
 

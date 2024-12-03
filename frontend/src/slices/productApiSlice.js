@@ -10,28 +10,35 @@ const productApiSlice = apiSlice.injectEndpoints({
             }), keepUnusedDataFor: 5,
         }),
 
-        getWomenProducts: builder.query({
-            query: () => ({
-                url: `${PRODUCTS_URL}/women`,
+        getProductsByCategory: builder.query({
+            query: ({category}) => ({
+                url: `${PRODUCTS_URL}/${category}`,
                 method: 'GET',
             }), keepUnusedDataFor: 5,
         }),
 
-        getMenProducts: builder.query({
-            query: () => ({
-                url: `${PRODUCTS_URL}/men`,
+        getProductsByTypeAndCategory: builder.query({
+            query: ({category, type}) => ({
+                url: `${PRODUCTS_URL}/${category}/${type}`,
                 method: 'GET',
             }), keepUnusedDataFor: 5,
         }),
 
         getProductById: builder.query({
-            query: (productId) => ({
-                url: `${PRODUCTS_URL}/${productId}`,
+            query: ({category, type, productId}) => ({
+                url: `${PRODUCTS_URL}/${category}/${type}/${productId}`,
+                method: 'GET',
+            })
+        }),
+
+        getBestSellingProducts: builder.query({
+            query: ({category}) => ({
+                url: `${PRODUCTS_URL}/${category}/bestselling`,
                 method: 'GET',
             })
         })
     })
 });
 
-export const { useGetAllProductsQuery, useGetMenProductsQuery, useGetWomenProductsQuery, useGetProductByIdQuery } = productApiSlice;
+export const { useGetAllProductsQuery, useGetProductsByCategoryQuery, useGetProductByIdQuery, useGetProductsByTypeAndCategoryQuery, useGetBestSellingProductsQuery } = productApiSlice;
 export default productApiSlice;

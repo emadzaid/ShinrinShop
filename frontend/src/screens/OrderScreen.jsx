@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { useSelector } from "react-redux";
 import { useGetOrderByIdQuery } from "../slices/orderApiSlice"
 
@@ -18,16 +18,26 @@ const OrderScreen = () => {
     isLoading ? (<Loader />) : error ? (<Message error={`${error?.data?.message || error.message || error.error}`} />) : (
 
       <Container>
-        <h1 className="md:text-4xl text-2xl tracking-widest text-center my-8">Thank you for your order!</h1>
-        <div className="bg-green-100 text-center px-4 py-2">
-          <h3 className="md:text-2xl text-lg mb-4 tracking-wide"> ORDER CONFIRMATION</h3>
-          {/* <span className="block mb-4">{order._id}</span>  */}
-          <span className="mb-4 block md:text-xl text-sm tracking-wide">{userInfo.name}, thank you for your order! </span>
-          <p className="md:text-xl text-sm tracking-wide">We've recieved your order and will contact you as soon as your package is shipped. You can find your purchase information below.</p>
-        </div>
-       
-       <div className="mt-8 mx-auto md:w-1/2">
-        <h3 className="heading-tertiary text-center mb-2 mb-4">Order Summary</h3>
+        {!order.isPaid && order.paymentMethod === 'PayPal' ? (
+          <>
+            <h1 className="text-xl uppercase tracking-widest text-center my-8">Order is Pending <br/> <br/> <Link to={`/orders/${order._id}/pay`} className="text-sm  border-2 px-4 py-2 rounded">Click to pay</Link> </h1>
+          
+          </>
+
+        ) : (
+          <>
+          <h1 className="text-xl uppercase tracking-widest text-center my-8">Thank you for your order!</h1>
+            <div className="bg-green-100 text-center px-4 py-2">
+              <h3 className="md:text-2xl text-lg mb-4 tracking-wide"> ORDER CONFIRMATION</h3>
+              {/* <span className="block mb-4">{order._id}</span>  */}
+              <span className="mb-4 block md:text-xl text-sm tracking-wide">{userInfo.name}, thank you for your order! </span>
+              <p className="md:text-xl text-sm tracking-wide">We've recieved your order and will contact you as soon as your package is shipped. You can find your purchase information below.</p>
+            </div>
+          </>
+        )}
+
+       <div className="mt-8 mx-auto md:w-1/2 py-2">
+        <h3 className="text-xl uppercase mb-2 mb-4">Order Summary</h3>
           <ul>
             {order.orderItems.map((x, i) => 
               <li key={i} className="flex items-center gap-4 mb-4 border-b pb-4">
@@ -44,10 +54,10 @@ const OrderScreen = () => {
           </ul>
        </div>
 
-       <div className="mt-8">
-        <h3 className="heading-tertiary text-center mb-4">Order Total</h3>
+       <div className="mt-8 md:w-1/2 mx-auto py-2">
+        <h3 className="text-xl uppercase mb-4">Order Total</h3>
 
-        <div className="flex flex-col gap-4 text-center border-y my-4 px-2 py-4 text-xl md:w-1/2 mx-auto">
+        <div className="flex flex-col gap-4 text-center border-y my-4 px-2 py-4 text-xl">
           <span className="flex justify-between">
             Subtotal Price: 
             <span>${order.itemsPrice.toFixed(2)} </span>
@@ -67,15 +77,15 @@ const OrderScreen = () => {
         </div>
        </div>
 
-       <div className="mt-8 md:w-1/2 mx-auto">
-        <h3 className="heading-tertiary text-center my-6">Shipping Address</h3>
+       <div className="mt-8 md:w-1/2 mx-auto py-2">
+        <h3 className="text-xl uppercase my-6">Shipping Address</h3>
         <ul className="md:text-lg text-sm tracking-widest">
-          <li className="border-b  py-2"><strong className="">Address</strong>: {shippingAddress.address}</li>
-          <li className="border-b  py-2"><strong> Country: </strong> {shippingAddress.country}</li>
+          <li className="border-b  py-2"> <strong className="">Address</strong>: {shippingAddress.address}</li>
+          <li className="border-b  py-2"> <strong> Country: </strong> {shippingAddress.country}</li>
           <li className="border-b  py-2"> <strong> City: </strong> {shippingAddress.city}</li>
           <li className="border-b  py-2"> <strong> Postal Code: </strong> {shippingAddress.postalCode}</li>
           <li className="border-b  py-2"> <strong> Phone: </strong> {shippingAddress.phone}</li>
-          <li className="border-b  py-2"> <strong> Payment Method: </strong> {order.paymentMethod }</li>
+          <li className="border-b  py-2"> <strong> Paid By: </strong> {order.paymentMethod }</li>
         </ul>
        </div>
 

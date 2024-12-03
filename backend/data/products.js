@@ -1,5 +1,4 @@
 const products = [
-
     {
         name: 'Tancho Silk Kimono Robe',
         description: 'Like the fine flowing feathers of the red-crowned crane, Japan’s most beloved bird, this Persian blue silk kimono robe is a regal statement loungewear that is sophisticated in its restraint. Crafted in Kyoto, wear this unique loungewear kimono robe very comfortably as lingerie or layered as an addition to your everyday wardrobe. Made with 100% silk with impeccable Japanese craftsmanship, this knee-length women’s robe with matching belt is perfect both as a valued gift or a sumptuous everyday treasure just for you.',
@@ -12,12 +11,11 @@ const products = [
         numReviews: 0,
         size: ['S', 'M', 'L', 'XL'],
         material: 'silk',
-        
+        BestSelling: false,
     },
-
     {
         name: 'Floral Ribbon Cotton-Satin Kimono Robe',
-        description: 'Let the feel of cotton-satin caress your skin as you lounge poolside in our Floral Ribbon Kimono Robe. Rich, traditional indigo blues, golden embellishments, and plum blossom and chrysanthemum designs, the glossy texture of this kimono robe beautifully reflects Japan’s seasons and the cycle of life. Crafted in Kyoto, wear this unique loungewear kimono robe very comfortably at home or layered as an addition to your everyday wardrobe. Made with luxuriously soft cotton-satin with impeccable Japanese craftsmanship, this knee-length women’s robe with matching belt and two pockets is perfect both as a valued gift or a sumptuous everyday treasure just for you.  ',
+        description: 'Let the feel of cotton-satin caress your skin as you lounge poolside in our Floral Ribbon Kimono Robe. Rich, traditional indigo blues, golden embellishments, and plum blossom and chrysanthemum designs, the glossy texture of this kimono robe beautifully reflects Japan’s seasons and the cycle of life. Crafted in Kyoto, wear this unique loungewear kimono robe very comfortably at home or layered as an addition to your everyday wardrobe. Made with luxuriously soft cotton-satin with impeccable Japanese craftsmanship, this knee-length women’s robe with matching belt and two pockets is perfect both as a valued gift or a sumptuous everyday treasure just for you.',
         image: ['/images/women-robe/FLORAL-BLUE-MAIN.jpg', '/images/women-robe/FLORAL-BLUE-2.jpg', '/images/women-robe/FLORAL-BLUE-3.jpg', '/images/women-robe/FLORAL-BLUE-4.jpg'],
         category: 'women',
         type: 'robe',
@@ -27,9 +25,8 @@ const products = [
         numReviews: 0,
         size: ['S', 'M', 'L', 'XL'],
         material: 'cotton',
-        
+        BestSelling: false,
     },
-
     {
         name: 'Hana Silk Kimono Robe',
         description: 'This lustrous silk kimono robe is adorned with classical Japanese floral motifs. Delicate cherry blossoms and golden ponies are painted on onyx black silk that radiates quiet glamor. Crafted in Kyoto, wear this unique loungewear kimono robe very comfortably as lingerie or layered as an addition to your everyday wardrobe. Made with 100% silk with impeccable Japanese craftsmanship, this knee-length women’s robe with matching belt is perfect both as a valued gift or a sumptuous everyday treasure just for you.',
@@ -42,9 +39,8 @@ const products = [
         numReviews: 0,
         size: ['L', 'XL'],
         material: 'silk',
-        
+        BestSelling: false,
     },
-
     {
         name: 'Cherry Blossom Cotton Kimono Robe',
         description: 'This silky soft cotton kimono robe is an exquisite rendition of the iconic Japanese cherry blossom. The crimson red is elegantly complemented by the delicate pinks of the blossoms, showcasing the romance of Japanese beauty. Crafted in Kyoto, wear this unique loungewear kimono robe very comfortably at home or layered as an addition to your everyday wardrobe. Made exclusively with the finest cotton and impeccable Japanese craftsmanship, this knee-length women’s robe with matching belt and two pockets is perfect both as a valued gift or a sumptuous everyday treasure just for you.',
@@ -57,12 +53,11 @@ const products = [
         numReviews: 0,
         size: ['M', 'L'],
         material: 'cotton',
-        
+        BestSelling: false,
     },
-
     {
         name: 'Japanese Crane Cotton Kimono Robe',
-        description: 'Like the fine flowing feathers of the red-crowned crane, Japan’s most beloved bird, this cotton short kimono robe is a regal statement loungewear that is sophisticated in its restraint. Crafted in Kyoto, wear this unique loungewear kimono robe very comfortably at home or layered as an addition to your everyday wardrobe. Made exclusively with the finest cotton and impeccable Japanese craftsmanship, this knee-length women’s robe with matching belt and two pockets is perfect both as a valued gift or a sumptuous everyday treasure just for you.  ',
+        description: 'Like the fine flowing feathers of the red-crowned crane, Japan’s most beloved bird, this cotton short kimono robe is a regal statement loungewear that is sophisticated in its restraint. Crafted in Kyoto, wear this unique loungewear kimono robe very comfortably at home or layered as an addition to your everyday wardrobe. Made exclusively with the finest cotton and impeccable Japanese craftsmanship, this knee-length women’s robe with matching belt and two pockets is perfect both as a valued gift or a sumptuous everyday treasure just for you.',
         image: ['/images/women-robe/ROB-CRANE-MAIN.jpg', '/images/women-robe/ROB-CRANE-1.jpg',  '/images/women-robe/ROB-CRANE-2.jpg',  '/images/women-robe/ROB-CRANE-3.jpg',  '/images/women-robe/ROB-CRANE-4.jpg'],
         category: 'women',
         type: 'robe',
@@ -72,12 +67,11 @@ const products = [
         numReviews: 0,
         size: ['S', 'M'],
         material: 'cotton',
-        
+        BestSelling: false,
     },
-
     {
         name: 'Temari Floral Cotton-Satin Kimono Robe',
-        description: 'This luxuriously soft cotton-satin kimono robe is decorated with gorgeous traditional Japanese motifs. The intricate temari silk balls were whimsical ornaments for palace ladies in the Heian period. Refined wisteria and peonies added to the regal elegance. Crafted in Kyoto, wear this unique loungewear kimono robe very comfortably at home or layered as an addition to your everyday wardrobe. Made with luxuriously soft cotton-satin with impeccable Japanese craftsmanship, this knee-length women’s robe with matching belt and two pockets is perfect both as a valued gift or a sumptuous everyday treasure just for you.  ',
+        description: 'This luxuriously soft cotton-satin kimono robe is decorated with gorgeous traditional Japanese motifs. The intricate temari silk balls were whimsical ornaments for palace ladies in the Heian period. Refined wisteria and peonies added to the regal elegance. Crafted in Kyoto, wear this unique loungewear kimono robe very comfortably at home or layered as an addition to your everyday wardrobe. Made with luxuriously soft cotton-satin with impeccable Japanese craftsmanship, this knee-length women’s robe with matching belt and two pockets is perfect both as a valued gift or a sumptuous everyday treasure just for you.',
         image: ['/images/women-robe/WHITE-TEMARI-MAIN.jpg', '/images/women-robe/WHITE-TEMARI-1.jpg',  '/images/women-robe/WHITE-TEMARI-2.jpg',  '/images/women-robe/WHITE-TEMARI-3.jpg',  '/images/women-robe/WHITE-TEMARI-4.jpg', '/images/women-robe/WHITE-TEMARI-5.jpg'],
         category: 'women',
         type: 'robe',
@@ -87,9 +81,8 @@ const products = [
         numReviews: 0,
         size: ['S', 'M', 'L'],
         material: 'cotton',
-        
+        BestSelling: false,
     },
-
     {
         name: 'Ame Blue Kurume Cotton Kimono',
         description: ' This women’s Japanese kimono, handmade in Kurume on Kyushu Island, showcases the finest traditional Japanese craftsmanship with a fresh and elegant design. Crafted from 100% shijira cotton, a specialty of the Kurume region, it is distinguished by the intricate weaving technique that produces a unique rustic texture. The kimono’s thicker fabric makes it perfect for the transitional seasons of spring and fall, providing warmth while remaining breathable. Despite its substantial feel, the kimono is unlined, offering versatility and ease of wear in varying temperatures. Easily washable and ironable at home, this women’s kimono is a practical yet elegant addition to your wardrobe. Pair it with an obi belt for a classic look or a simple sash for a modern twist.',
@@ -102,23 +95,112 @@ const products = [
         numReviews: 0,
         size: [],
         material: 'cotton',
-        
+        BestSelling: false,
+    },
+    {
+        name: 'Sumi Black Kurume Cotton Kimono',
+        description: 'This women’s Japanese kimono, handmade in Kurume on Kyushu Island, showcases the finest traditional Japanese craftsmanship with a fresh and elegant design. Crafted from 100% shijira cotton, a specialty of the Kurume region, it is distinguished by the intricate weaving technique that produces a unique rustic texture. The kimono’s thicker fabric makes it perfect for the transitional seasons of spring and fall, providing warmth while remaining breathable. Despite its substantial feel, the kimono is unlined, offering versatility and ease of wear in varying temperatures. Easily washable and ironable at home, this women’s kimono is a practical yet elegant addition to your wardrobe. Pair it with an obi belt for a classic look or a simple sash for a modern twist.',
+        image: ['/images/women-kimono/Sumi-Black-Kurume-Cotton-Kimono-Main.jpg', '/images/women-kimono/Sumi-Black-Kurume-Cotton-Kimono-1.jpg', '/images/women-kimono/Sumi-Black-Kurume-Cotton-Kimono-2.jpg', '/images/women-kimono/Sumi-Black-Kurume-Cotton-Kimono-3.jpg', '/images/women-kimono/Sumi-Black-Kurume-Cotton-Kimono-4.jpg'],
+        category: 'women',
+        type: 'kimono',
+        price: 300,
+        countInStock: 7,
+        ratings: 5,
+        numReviews: 0,
+        size: [],
+        material: 'cotton',
+        BestSelling: false,
+    },
+    {
+        name: 'Matcha Green Kurume Cotton Kimono',
+        description: 'This women’s Japanese kimono, handmade in Kurume on Kyushu Island, showcases the finest traditional Japanese craftsmanship with a fresh and elegant design. Crafted from 100% shijira cotton, a specialty of the Kurume region, it is distinguished by the intricate weaving technique that produces a unique rustic texture. The kimono’s thicker fabric makes it perfect for the transitional seasons of spring and fall, providing warmth while remaining breathable. Despite its substantial feel, the kimono is unlined, offering versatility and ease of wear in varying temperatures. Easily washable and ironable at home, this women’s kimono is a practical yet elegant addition to your wardrobe. Pair it with an obi belt for a classic look or a simple sash for a modern twist.',
+        image: ['/images/women-kimono/Matcha-Green-Kurume-Cotton-Kimono-main.jpg', '/images/women-kimono/Matcha-Green-Kurume-Cotton-Kimono-1.jpg', '/images/women-kimono/Matcha-Green-Kurume-Cotton-Kimono-2.jpg', '/images/women-kimono/Matcha-Green-Kurume-Cotton-Kimono-3.jpg', '/images/women-kimono/Matcha-Green-Kurume-Cotton-Kimono-4.jpg'],
+        category: 'women',
+        type: 'kimono',
+        price: 340,
+        countInStock: 8,
+        ratings: 0,
+        numReviews: 0,
+        size: [],
+        material: 'cotton',
+        BestSelling: false,
     },
 
     {
+        name: 'Black Transparent Kimono Hayko',
+        description: 'A Women\'s Kimono in Black and TransparentThis transparent kimono jacket is made of reinforced polyester and has a straight cut. It also has wide sleeves, making it perfect for stylish women who need a comfortable yet stylish garment. Japanese patterns on the fabric give this piece a unique look that will turn heads wherever you go.',
+        image: ['/images/women-kimono-jacket/Black-Transparent-Kimono-Main.jpg', '/images/women-kimono-jacket/Black-Transparent-Kimono-1.jpg', '/images/women-kimono-jacket/Black-Transparent-Kimono-2.jpg', '/images/women-kimono-jacket/Black-Transparent-Kimono-3.jpg', '/images/women-kimono-jacket/Black-Transparent-Kimono-4.jpg'],
+        category: 'women',
+        type: 'kimono-jacket',
+        price: 30,
+        countInStock: 8,
+        ratings: 0,
+        numReviews: 0,
+        size: ['S', 'M', 'L'],
+        material: 'reinforced polyester fabric',
+        BestSelling: false,
+    },
+
+    {
+        name: 'Japanese Shirts for Women Sakoya',
+        description: 'The elegant japanese shirts for women with original japanese pattern Looking for a traditional Japanese garment that will make you stand out from the crowd? Look no further than this elegant and unique Japanese patterned women\'s shirt! Made of high quality acrylic, it features a beautiful crane flight pattern, the iconic Japanese bird with large wings akin to the sign. Its straight cut is perfect for dressing up in hot weather.',
+        image: ['/images/women-kimono-jacket/Japanese-Shirts-for-Women-Sakoya-Main.jpg', '/images/women-kimono-jacket/Japanese-Shirts-for-Women-Sakoya-1.jpg', '/images/women-kimono-jacket/Japanese-Shirts-for-Women-Sakoya-2.jpg', '/images/women-kimono-jacket/Japanese-Shirts-for-Women-Sakoya-3.jpg' ],
+        category: 'women',
+        type: 'kimono-jacket',
+        price: 40,
+        countInStock: 8,
+        ratings: 0,
+        numReviews: 0,
+        size: ['S', 'M', 'L'],
+        material: 'acrylic fabric',
+        BestSelling: false,
+    },
+
+    {
+        name: 'Silk Kimono Jacket Soraka',
+        description: 'Women\'s silk Kimono jacket with Japanese eagle pattern Step out in style with this luxurious silk kimono jacket ! This traditional Japanese garment has been updated in a sleek design and chiffon fabric. It features an eagle print in bluish tones, making it the perfect addition to your summer outfit. Whether you\'re looking to dress up or down, this jacket is sure to make a statement.',
+        image: ['/images/women-kimono-jacket/Silk-Kimono-Jacket-Soraka-Main.jpg', '/images/women-kimono-jacket/Silk-Kimono-Jacket.jpg', '/images/women-kimono-jacket/Silk-Kimono-Jacket-Soraka.jpg'  ],
+        category: 'women',
+        type: 'kimono-jacket',
+        price: 45,
+        countInStock: 8,
+        ratings: 0,
+        numReviews: 0,
+        size: ['S', 'M', 'L'],
+        material: 'silk fabric',
+        BestSelling: false,
+    },
+
+    {
+        name: 'Japanese Blouse Toyama',
+        description: 'A Japanese blouse for women with an elegant and vintage print This Japanese down blouse is perfect for giving any outfit an extra touch of tradition and style. It is made of high quality cotton and reinforced polyester to ensure a long life, and the navy blue color is ideal for not overexposing yourself to the eyes. The relaxed fit makes this blouse easy to wear, and the trendy pattern ensures that your Japanese look is always in style.',
+        image: ['/images/women-kimono-jacket/Japanese-Blouse.jpg', '/images/women-kimono-jacket/Japanese-Blouse-Toyama.jpg'],
+        category: 'women',
+        type: 'kimono-jacket',
+        price: 35,
+        countInStock: 8,
+        ratings: 0,
+        numReviews: 0,
+        size: ['S', 'M', 'L'],
+        material: 'reinforced polyester fabric',
+        BestSelling: false,
+    },
+
+
+    {
         name: 'Black Men\'s Kimono \'Yuudai\'',
-        description: 'Our new men\'s black kimono is finally here! This traditional jacket is made of durable cotton and linen, and features a straight cut with an oversized hip for outstanding wearability. Its soft, consistent fabric makes it perfect for summer outings or evenings out with friends watching a movie. The solid color and three-quarter length sleeves make it a timeless Japanese style that will never go out of style.',
+        description: 'Our new men\'s black kimono is finally here, designed to bring the traditional Japanese craftsmanship of Kyoto to the modern world. This robe is a fusion of both worlds, combining the elegance of a traditional kimono with the modern sensibility of a stylish robe jacket.  Made with premium materials, this kimono has been carefully woven and sewn to ensure superior quality and comfort, making it perfect for lounging at home or wearing out to the city streets. The simple yet stylish design makes it versatile enough for both casual and more formal settings, making it the perfect addition to your wardrobe.',
         image: ['/images/men-kimono-jacket/Black-Mens-Kimono.jpg'],
         category: 'men',
         type: 'kimono-jacket',
-        price: 90,
+        price: 160,
         countInStock: 5,
-        ratings: 5,
-        numReviews: 10,
+        ratings: 0,
+        numReviews: 0,
         size: ['S', 'M', 'L'],
-        material: 'cotton', 
+        material: 'cotton',
+        BestSelling: false,
     }
-
 ];
 
 module.exports = products;

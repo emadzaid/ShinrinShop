@@ -10,11 +10,11 @@ const orderSchema = new mongoose.Schema({
     orderItems: [
         {
             name: { type: String, required: true }, // Name of the product
-            image: {type: [String], default: [], },
-        
+            image: {type: [String], default: [], }, // images
             qty: { type: Number, required: true }, // Quantity ordered
             price: { type: Number, required: true }, // Price of the item
             product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true }, // Reference to the Product model
+            selectedSize: { type: [String], default: []}, 
         },
     ],
 

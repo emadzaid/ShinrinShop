@@ -9,7 +9,7 @@
     }
 
     .logo-text {
-        @apply text-2xl uppercase font-light px-2 mx-1
+        @apply text-2xl uppercase font-light
     }
 
     .navDropDown {

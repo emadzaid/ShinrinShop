@@ -29,7 +29,7 @@ const CartScreen = () => {
         <Section>
             {cart.cartItems.length === 0 ? (<h1 className="text-center text-2xl tracking-widest">Your cart is empty </h1>) : (
                     <div className='grid lg:grid-cols-2 grid-cols-1 gap-4'>
-                    <div className="md:w-[70%] mx-auto overflow-y-scroll h-screen no-scrollbar">
+                    <div className="md:w-[70%] mx-auto overflow-y-scroll max-h-screen no-scrollbar">
                         <ul>
                             {cart.cartItems.map((x, i) => 
                             <li key={i} className="flex items-center gap-4 mb-4 border-b pb-4">

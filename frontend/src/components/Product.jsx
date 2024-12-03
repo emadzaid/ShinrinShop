@@ -18,7 +18,7 @@ const Product = ({ product }) => {
                     />
           ) : (
             <img
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full object-cover"
             src={product.image}
             alt={product.name}
              />
@@ -27,7 +27,7 @@ const Product = ({ product }) => {
         </div>
         
         <span className="uppercase text-sm">{product.type}</span>
-        <p className=" mb-2 text-lg font-semibold">{product.name}</p>
+        <p className=" mb-2 text-[15px] font-semibold">{product.name}</p>
         <span className="font-md">${product.price.toFixed(2)}</span>
       </Link>
     </div>

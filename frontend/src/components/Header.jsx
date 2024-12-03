@@ -54,40 +54,38 @@ return (
                   d="M4 6h16M4 12h16M4 18h16"></path>
               </svg>
             </label>
-            <Link to={'/'}><span className="logo-text">ShinrinShop</span></Link>
+            <Link to={'/'}><span className="logo-text text-lg">ShinrinShop</span></Link>
           </div>
           
-          <Link to={'/'}> <span className="logo-text hidden lg:block">ShinrinShop</span> </Link>
+          <Link to={'/'}> <span className="logo-text hidden mx-2 lg:block">ShinrinShop</span> </Link>
 
           <div className='gap-8 uppercase'>
             
-            <div className="navDropDown dropdown-hover  ">
-              <div tabIndex={0} role="button" className="font-bold text-sm m-1"><Link to={'/collections/women'}>Women</Link></div>
-              <ul tabIndex={0} className="navDropDownContent dropdown-content">
-                <li><Link to={'/collections/women/kimono-jackets'}>Kimono Jacket</Link></li>
-                <li><Link to={''}>Japanese Kimono</Link></li>
-                <li><Link to={''}>Robes</Link></li>
+            <div className="navDropDown dropdown-hover ">
+              <div tabIndex={0} role="button" className="font-bold text-sm m-1 "><Link to={'/collections/women'}>Women</Link></div>
+              <ul tabIndex={0} className="navDropDownContent dropdown-content bg-base-200 tracking-widest">
+                <li><Link to={'/collections/women/kimono-jacket'}>Kimono Jacket</Link></li>
+                <li><Link to={'/collections/women/kimono'}>Japanese Kimono</Link></li>
+                <li><Link to={'/collections/women/robe'}>Robes</Link></li>
                 <li><Link to={''}>Japanese Dress</Link></li>     
-                <img loading='lazy' src={'../../public/images/women-kimono/Japanese-Long-Dress-\'Dento-Teki\'.jpg'} alt="women category image" />   
               </ul>
         
             </div>
 
             <div className="navDropDown dropdown-hover">
               <div tabIndex={0} role="button" className="font-bold text-sm m-1"><Link to={'/collections/men'}>Men</Link></div>
-              <ul tabIndex={0} className="navDropDownContent dropdown-content">
-                <li><Link to={''}>Kimono Jacket</Link></li>
-                <li><Link to={''}>Japanese Kimono</Link></li> 
-                <img loading='lazy' src={'../../public/images/men-kimono/The-Kimono-for-Men-Fashion-Japanstreet-with-the-famous-koi-carp-pattern.jpg'} alt="men category image"  />   
-      
+              <ul tabIndex={0} className="navDropDownContent dropdown-content bg-base-200 tracking-widest">
+                <li><Link to={'/collections/men/kimono-jacket'}>Kimono Jacket</Link></li>
+                <li><Link to={''}>Japanese Kimono</Link></li>       
               </ul>
         
             </div>
 
             <div className="navDropDown dropdown-hover">
-              <div tabIndex={0} role="button" className="font-bold text-sm m-1">Accessories</div>
-              <ul tabIndex={0} className="navDropDownContent dropdown-content">
-                     {/* Add Accessories later  */}
+              <div tabIndex={0} role="button" className="font-bold text-sm m-1">Gifts & Accessories</div>
+              <ul tabIndex={0} className="navDropDownContent dropdown-content bg-base-200 tracking-widest">
+                <li><Link to={''}>For her</Link></li> 
+                <li><Link to={''}>For him</Link></li>       
               </ul>
         
             </div>
@@ -104,6 +102,7 @@ return (
                     <div tabIndex={0} role="button" className="m-1 uppercase border-2 border-gray-500 rounded-full px-3 py-1">{userInfo.name[0]}</div>
                     <ul tabIndex={0} className="dropdown-content menu bg-base-200 rounded-box z-[1] w-52 p-2 shadow">
                       <li className="border-b uppercase tracking-widest"><Link to='/profile'> My Profile </Link></li>
+                      <li className="border-b uppercase tracking-widest"><Link to='/myorders'> My Orders </Link></li>
                       <li><button className="uppercase tracking-widest" onClick={logoutHandler}>Sign out</button></li>
                     </ul>
                   </div>
