@@ -17,7 +17,7 @@ const OrderScreen = () => {
   return (
     isLoading ? (<Loader />) : error ? (<Message error={`${error?.data?.message || error.message || error.error}`} />) : (
 
-      <Container>
+      <div>
         {!order.isPaid && order.paymentMethod === 'PayPal' ? (
           <>
             <h1 className="text-xl uppercase tracking-widest text-center my-8">Order is Pending <br/> <br/> <Link to={`/orders/${order._id}/pay`} className="text-sm  border-2 px-4 py-2 rounded">Click to pay</Link> </h1>
@@ -41,7 +41,7 @@ const OrderScreen = () => {
           <ul>
             {order.orderItems.map((x, i) => 
               <li key={i} className="flex items-center gap-4 mb-4 border-b pb-4">
-                  <img width="80" height="150" src={x.image[0]} className='rounded' />
+                  <img src={x.image[0]} className='rounded w-16 sm:w-20' />
                   <div className="flex flex-col gap-1">
                     <span className="font-semibold"> {x.name}</span>
                     <span> Price: ${x.price}</span>
@@ -91,7 +91,7 @@ const OrderScreen = () => {
 
         {/* <Timeline currentStage={'Order Placed'} /> */}
         
-      </Container>
+      </div>
 
     )
   )

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { updateShippingAddress, updatePaymentMethod } from '../slices/cartSlice';
+import { updateShippingAddress, updatePaymentMethod, emptyCart } from '../slices/cartSlice';
 import { useCreateOrderMutation} from '../slices/orderApiSlice';
 
 import Container from '../utils/Container';
@@ -51,6 +51,7 @@ const CheckoutScreen = () => {
       }).unwrap();
 
       res.paymentMethod === 'PayPal' ? navigate(`/orders/${res._id}/pay`) : navigate(`/orders/${res._id}`);
+      dispatch(emptyCart());
 
     } catch (err) {
       console.log(err)

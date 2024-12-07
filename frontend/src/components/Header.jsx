@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Cart from "./Cart";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +18,20 @@ const Header = () => {
   const dispatch = useDispatch();  
   const [logoutUserApiCall, {isLoading}] = useLogoutUserMutation();
 
+  const location = useLocation();
+
+  useEffect(() => {
+    const drawerCheckbox = document.getElementById('my-drawer-4');
+    if (drawerCheckbox) {
+      drawerCheckbox.checked = false; // Close the drawer on route change
+    }
+  }, [location]);
+
   const checkoutHandler = async () => {
+    // const drawerCheckbox = document.getElementById('my-drawer-4'); // Get the drawer checkbox element
+    // if (drawerCheckbox) {
+    //   drawerCheckbox.checked = false; // Uncheck the drawer
+    // }
     navigate('/login?redirect=/checkout'); 
   }
 
@@ -67,7 +81,7 @@ return (
                 <li><Link to={'/collections/women/kimono-jacket'}>Kimono Jacket</Link></li>
                 <li><Link to={'/collections/women/kimono'}>Japanese Kimono</Link></li>
                 <li><Link to={'/collections/women/robe'}>Robes</Link></li>
-                <li><Link to={''}>Japanese Dress</Link></li>     
+                <li><Link to={'/collections/women/loungewear'}>Samue Loungewear</Link></li>     
               </ul>
         
             </div>
@@ -102,7 +116,14 @@ return (
                     <div tabIndex={0} role="button" className="m-1 uppercase border-2 border-gray-500 rounded-full px-3 py-1">{userInfo.name[0]}</div>
                     <ul tabIndex={0} className="dropdown-content menu bg-base-200 rounded-box z-[1] w-52 p-2 shadow">
                       <li className="border-b uppercase tracking-widest"><Link to='/profile'> My Profile </Link></li>
-                      <li className="border-b uppercase tracking-widest"><Link to='/myorders'> My Orders </Link></li>
+
+                      {userInfo?.isAdmin ? (<li className="border-b uppercase tracking-widest"> <Link to='/admin/panel'>Admin Panel</Link></li>)  : 
+
+                      (<li className="border-b uppercase tracking-widest"><Link to='/myorders'> My Orders </Link></li>
+
+                      )}
+
+                      
                       <li><button className="uppercase tracking-widest" onClick={logoutHandler}>Sign out</button></li>
                     </ul>
                   </div>

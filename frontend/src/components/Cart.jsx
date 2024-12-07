@@ -19,7 +19,7 @@ const Cart = ({item}) => {
             <div className="font-light flex flex-col gap-2">
                 <span className="text-2xl">{item.name}</span>
                 <span className="text-sm font-bold">Type: {item.type}</span>
-                <span className="text-sm font-bold">Size: {item.selectedSize}</span>
+                <span className="text-sm font-bold">Size: {item.selectedSize === "" ? 'N/A' : item.selectedSize }</span>
                 <span className="text-sm font-bold">Price: ${item.price}</span>       
                 <span className="text-sm font-bold">Quantity: {item.qty}</span>             
             

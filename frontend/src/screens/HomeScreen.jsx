@@ -20,10 +20,10 @@ export const HomeScreen = () => {
   
   return (
     <>
-      <Hero />
       
       <Container>
-        <Section className="sm:w-[90%] mx-auto">
+        <Hero />
+        <Section className="sm:w-[90%] mt-8 mx-auto">
           <Title text1={'BESTSELLERS'} text2={'FOR HER'} className={'sm:text-2xl text-lg'} />
           {loadingWomenCollection ? (<Loader />) : womenCollectionError ? (<Message error={womenCollectionError?.message || womenCollectionError.data?.message} />) : (
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5 gap-3 px-4">
@@ -96,7 +96,7 @@ export const HomeScreen = () => {
                 />
                 <div className="absolute inset-0 flex flex-row justify-end items-end bg-black/50 hover:bg-transparent text-white p-4 transition">
                   <Link
-                    to="/"
+                    to="/collections/women/"
                     className="sm:text-[14px] text-[10px] uppercase tracking-widest font-bold bg-black hover:bg-black/50 px-4 py-2 rounded transition hover:-translate-y-1"
                   >
                     View
@@ -111,7 +111,7 @@ export const HomeScreen = () => {
                 />
                 <div className="absolute inset-0 flex flex-row justify-end items-end bg-black/50 hover:bg-transparent text-white p-4 transition">
                   <Link
-                    to="/"
+                    to="/collections/men/"
                     className="sm:text-[14px] text-[10px] uppercase tracking-widest font-bold bg-black hover:bg-black/50 px-4 py-2 rounded transition hover:-translate-y-1"
                   >
                     View
@@ -126,7 +126,7 @@ export const HomeScreen = () => {
                 />
                 <div className="absolute inset-0 flex flex-row justify-end items-end bg-black/50 hover:bg-transparent text-white p-4 transition">
                   <Link
-                    to="/"
+                    to="/collections/accessories/"
                     className="sm:text-[14px] text-[10px] uppercase tracking-widest font-bold bg-black hover:bg-black/50 px-4 py-2 rounded transition hover:-translate-y-1"
                   >
                     View

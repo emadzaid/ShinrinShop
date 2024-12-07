@@ -104,7 +104,7 @@ const ProductScreen = () => {
                                                                     
                                     : (
                                         <>
-                                            {product.type === 'kimono' && <KimonoSizeGuideModel /> }
+                                            {(product.type === 'kimono' || product.type === 'kimono-jacket') && <KimonoSizeGuideModel /> }
                                         </>
                                     )}
 

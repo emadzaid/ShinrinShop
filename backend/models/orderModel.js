@@ -67,16 +67,26 @@ const orderSchema = new mongoose.Schema({
         type: Date, // Date and time when the order was paid
     },
 
-    isDelivered: {
-        type: Boolean,
+    status: {
+        type: String,
+        enum: ['Pending Payment', 'Order Confirmed', 'Order Processed', 'Shipped', 'Delivered'],
+        default: function () {
+            return !this.isPaid && this.paymentMethod === 'PayPal' ? 'Pending Payment' : 'Order Confirmed';
+        },
         required: true,
-        default: false,
     },
-
+    
     deliveredAt: {
         type: Date, // Date and time when the order was delivered
     },
 
 }, { timestamps: true });
+
+orderSchema.pre('save', function (next) {
+    if (this.isPaid && this.status === 'Pending Payment') {
+        this.status = 'Order Confirmed';
+    }
+    next();
+});
 
 module.exports = mongoose.model('Order', orderSchema);

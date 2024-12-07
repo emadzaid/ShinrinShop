@@ -10,14 +10,20 @@ const {calcPrice} = require('../utils/calcPrice');
 const placeOrder = asyncHandler(async (req,res) => {
     const {orderItems, shippingAddress, paymentMethod} = req.body;
 
-    console.log('USERID', req.user._id)
+     // Validate shippingAddress
+    const requiredShippingFields = ['address', 'city', 'postalCode', 'country', 'phone'];
+    const missingFields = requiredShippingFields.filter(
+        (field) => !shippingAddress || !shippingAddress[field]
+    );
 
-      if (!shippingAddress || Object.keys(shippingAddress).length === 0) {
-        res.status(400);
-        throw new Error("Shipping address is required");
-      }
+    if (missingFields.length > 0) {
+            res.status(400);
+            throw new Error(
+            `Missing required fields in shipping address: ${missingFields.join(', ')}`
+            );
+        }
     
-      if (!paymentMethod) {
+    if (!paymentMethod) {
         res.status(400);
         throw new Error("Payment method is required");
       }
@@ -123,4 +129,48 @@ const updateOrderToPaid = asyncHandler(async (req,res) => {
 
 
 
-module.exports = {placeOrder, getMyOrders, getOrderById, updateOrderToPaid};
+// @description Get all orders
+// @method GET /api/orders/
+// @access PRIVATE/ADMIN
+
+const getAllOrders = asyncHandler(async (req,res) => {
+    const orders = await Order.find({}).populate('user', 'id name');
+    if(orders.length > 0) {
+        res.status(200).json(orders);
+    } else {
+        res.status(404);
+        throw new Error('No orders found');
+    }
+})
+
+// @description update order stauts
+// @method PUT /api/orders/:id
+// @access PRIVATE/ADMIN
+
+const updateOrderStatus = asyncHandler(async (req, res) => {
+
+    const { id, status } = req.body; // The new status sent in the request body
+    console.log(id, status)
+
+    // Find the order by ID
+    const order = await Order.findById(id);
+
+    if (!order) {
+        res.status(404);
+        throw new Error('Order not found');
+    }
+
+    // Update the order status
+    order.status = status;
+    const updatedOrder = await order.save();
+
+    // Return the updated order
+    res.status(200).json({
+        message: 'Order status updated successfully',
+        order: updatedOrder,
+    });
+});
+
+
+
+module.exports = {placeOrder, getMyOrders, getOrderById, updateOrderToPaid, getAllOrders, updateOrderStatus};

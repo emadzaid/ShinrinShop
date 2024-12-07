@@ -22,15 +22,17 @@ const CollectionsScreen = () => {
 
     return (
     <Section className="sm:w-[90%] mx-auto">
-        <Title text1={`${category}`} text2={`${type || 'Collection'}`} className={'sm:text-2xl text-lg uppercase mb-8'} />
-
+        <Title text1={`${category}`} text2={`${type?.replace(/-/g, ' ') || 'Collection'}`} className={'sm:text-2xl text-lg uppercase mb-8'} />
         <Container>
             {loadingcollection ? (<Loader />) : collectionError ? (<Message error={collectionError?.message || collectionError.data?.message} />) : (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5 gap-3 px-4">
-                {collection.map((product) => {
-                return <Product product={product} key={product._id}/>
-                })}
-            </div>
+              <>
+              <p className="text-end mb-6"><strong>{collection?.length}</strong> products</p>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5 gap-3 px-4">
+                  {collection.map((product) => {
+                  return <Product product={product} key={product._id}/>
+                  })}
+              </div>
+            </>
         )}
         </Container>
     </Section>

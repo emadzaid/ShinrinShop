@@ -3,37 +3,6 @@ const asyncHandler = require('../middlwares/asyncHandler')
 const generateToken = require('../utils/generateToken');
 
 
-// @description authenticate the user (login)
-// @Method POST /api/users/auth
-// @Access PUBLIC
-
-// const authUser = asyncHandler(async (req, res) => {
-//     const { email, password } = req.body;
-
-//     // Check if the user exists
-//     const user = await User.findOne({ email });
-
-//     if (user && (await user.matchPassword(password))) {
-//         // Generate token
-//         generateToken(res, user._id);
-
-//         res.status(200).json({
-//             _id: user._id,
-//             name: user.name,
-//             email: user.email,
-//             isAdmin: user.isAdmin,
-//         });
-//     } else {
-//         res.status(401).json({ message: 'Invalid email or password' });
-//     }
-// });
-
-
-
-// @description register a new user
-// @Method POST /api/users/
-// @Access PUBLIC
-
 const registerUser = asyncHandler (async(req,res) => {
     const {name, email, password} = req.body;
 
@@ -161,7 +130,7 @@ const updateProfile = asyncHandler (async(req,res) => {
 
 // @description get all users
 // @Method GET /api/users/
-// @Access PRIVATE
+// @Access PRIVATE/ADMIN
 
 const getAllUsers = asyncHandler (async(req,res) => {
     const users = await User.find({});
@@ -172,5 +141,7 @@ const getAllUsers = asyncHandler (async(req,res) => {
     }
 
 })
+
+
 
 module.exports = {getAllUsers, registerUser, authUser, logoutUser, getUserProfile, updateProfile};

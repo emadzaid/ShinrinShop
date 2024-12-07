@@ -84,7 +84,7 @@ const getBestSellingProducts = asyncHandler (async(req,res) => {
          res.status(200).json(products);
     } else {
         res.status(404);
-        throw new Error('Products Not Found');
+        throw new Error('No Best Selling Products');
     }
 })
 

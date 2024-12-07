@@ -88,8 +88,9 @@ const PaymentScreen = () => {
                     <Loader />
                   ) : (
                     <>
-                    <h2 className="text-center text-xl tracking-widest my-8">How would you like to pay?</h2>
-                    <div className="border-x flex flex-col items-center justify-around py-4 h-[400px]">
+                    <h2 className="text-center text-lg tracking-wide my-8 text-gray-400">Review your order and ensure details are correct before payment. </h2>
+                    <div className=" flex flex-col items-center justify-around py-4 h-[400px]">
+
                       {/* // THIS BUTTON IS FOR TESTING! REMOVE BEFORE PRODUCTION!  */}
                       <button
                         onClick={onApproveTest}
@@ -98,8 +99,8 @@ const PaymentScreen = () => {
                         Test Pay Order
                       </button> 
 
-                      <div className="sm:w-[400px] w-[300px] max-[370px]:w-[250px] mx-auto">
-                        <div>
+                      <div className="sm:w-[400px] w-[300px] max-[370px]:w-[250px] mx-auto h-96 overflow-y-scroll no-scrollbar">
+                        <div className="" >
                             <PayPalButtons
                                 style={{
                                   layout: 'vertical',

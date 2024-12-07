@@ -11,6 +11,6 @@ router.post('/logout', logoutUser);
 router.get('/profile', protect, getUserProfile); // protected
 router.put('/profile', protect, updateProfile); // protected
 
-router.get('/', getAllUsers);
+router.get('/', protect, admin, getAllUsers);
 
 module.exports = router;
