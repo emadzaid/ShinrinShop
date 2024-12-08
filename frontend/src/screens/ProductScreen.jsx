@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
-import { useGetProductByIdQuery } from "../slices/productApiSlice";
+import { useGetProductByIdQuery, useGetProductByIdOnlyQuery } from "../slices/productApiSlice";
 import { useDispatch } from "react-redux";
 
 import Container from "../utils/Container";
@@ -22,7 +22,9 @@ const ProductScreen = () => {
     const [size, setSize] = useState('');
 
     const { category, type, id: productId } = useParams();
-    const {data:product, isLoading, error} = useGetProductByIdQuery({category, type, productId});
+    // const {data:product, isLoading, error} = useGetProductByIdQuery({category, type, productId});
+    const {data:product, isLoading, error} = useGetProductByIdOnlyQuery(productId);
+
 
     const dispatch = useDispatch();
 
@@ -63,8 +65,8 @@ const ProductScreen = () => {
                     <div>
                         <div className="grid md:grid-cols-2 grid-cols-1 gap-12">
                             {/* GRID 1 */}
-                            <div className="flex sm:flex-row flex-col-reverse gap-4 justify-end">
-                                <div className="max-sm:flex gap-3 items-end max-sm:overflow-x-scroll">
+                            <div className="flex sm:flex-row flex-col-reverse gap-4 justify-end overflow-hidden">
+                                <div className="max-sm:flex gap-3 items-end max-sm:overflow-x-scroll py-1">
                                     {
                                         product.image.map((img, index) => {
                                             return <img onClick={() => setImage(img)} src={img} key={index} alt={product.name} className={`${image  === img ? "ring-1 ring-black brightness-75" : ""} cursor-pointer sm:mb-3 sm:w-[80px] w-[20%] object-cover`}/>
@@ -73,7 +75,7 @@ const ProductScreen = () => {
 
                                 </div>
                            
-                                <div className="sm:w-[500px] w-full">
+                                <div className="sm:w-[500px] w-full ">
                                     <img className="" src={image} alt={product.name}/>
                                 </div>
                             </div>
@@ -144,23 +146,3 @@ const ProductScreen = () => {
 
 export default ProductScreen;
 
-
-{/* <div className="border-t-2 pt-10 trasnition-opacity ease-in duration-500 opacity-100">
-                    <div className="flex gap-12 flex-col sm:flex-row">
-                        <div className="flex flex-col-reverse gap-3 sm:flex-row ">
-                            <div className="flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal gap-4 md:w-[10%] w-full">
-                                {
-                                    product.image.map((img, index) => {
-                                        return <img onClick={(e) => setImage(e.target.src)} src={img} key={index} alt={product.name} className="cursor-pointer w-[24%] sm:w-[80%] sm:mb-3 flex-shrink-0 object-cover"/>
-                                    })
-                                }
-
-                            </div>
-                            <div className="">
-                                <img className="w-full h-auto object-cover" src={image} alt={product.name}/>
-                            </div>
-                        </div>
-
-                        <div></div>
-                    </div>
-                </div> */}

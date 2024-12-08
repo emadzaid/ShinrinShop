@@ -11,7 +11,7 @@ const products = [
         numReviews: 0,
         size: ['S', 'M', 'L', 'XL'],
         material: 'silk',
-        BestSelling: false,
+        bestSelling: false,
     },
     {
         name: 'Floral Ribbon Cotton-Satin Kimono Robe',
@@ -25,7 +25,7 @@ const products = [
         numReviews: 0,
         size: ['S', 'M', 'L', 'XL'],
         material: 'cotton',
-        BestSelling: false,
+        bestSelling: false,
     },
     {
         name: 'Hana Silk Kimono Robe',
@@ -39,7 +39,7 @@ const products = [
         numReviews: 0,
         size: ['L', 'XL'],
         material: 'silk',
-        BestSelling: false,
+        bestSelling: false,
     },
     {
         name: 'Cherry Blossom Cotton Kimono Robe',
@@ -53,7 +53,7 @@ const products = [
         numReviews: 0,
         size: ['M', 'L'],
         material: 'cotton',
-        BestSelling: false,
+        bestSelling: false,
     },
     {
         name: 'Japanese Crane Cotton Kimono Robe',
@@ -67,7 +67,7 @@ const products = [
         numReviews: 0,
         size: ['S', 'M'],
         material: 'cotton',
-        BestSelling: false,
+        bestSelling: false,
     },
     {
         name: 'Temari Floral Cotton-Satin Kimono Robe',
@@ -81,7 +81,7 @@ const products = [
         numReviews: 0,
         size: ['S', 'M', 'L'],
         material: 'cotton',
-        BestSelling: false,
+        bestSelling: false,
     },
     {
         name: 'Ame Blue Kurume Cotton Kimono',
@@ -95,7 +95,7 @@ const products = [
         numReviews: 0,
         size: [],
         material: 'cotton',
-        BestSelling: false,
+        bestSelling: false,
     },
     {
         name: 'Sumi Black Kurume Cotton Kimono',
@@ -109,7 +109,7 @@ const products = [
         numReviews: 0,
         size: [],
         material: 'cotton',
-        BestSelling: false,
+        bestSelling: false,
     },
     {
         name: 'Matcha Green Kurume Cotton Kimono',
@@ -123,7 +123,7 @@ const products = [
         numReviews: 0,
         size: [],
         material: 'cotton',
-        BestSelling: false,
+        bestSelling: false,
     },
 
     {
@@ -138,7 +138,7 @@ const products = [
         numReviews: 0,
         size: [],
         material: 'cotton',
-        BestSelling: false,
+        bestSelling: false,
     },
 
     {
@@ -153,7 +153,7 @@ const products = [
         numReviews: 0,
         size: [],
         material: 'cotton',
-        BestSelling: false,
+        bestSelling: false,
     },
 
     {
@@ -168,7 +168,7 @@ const products = [
         numReviews: 0,
         size: [],
         material: 'cotton',
-        BestSelling: false,
+        bestSelling: false,
     },
 
     {
@@ -183,7 +183,7 @@ const products = [
         numReviews: 0,
         size: ['S', 'M', 'L'],
         material: 'cotton',
-        BestSelling: false,
+        bestSelling: false,
     },
 
     {
@@ -198,7 +198,7 @@ const products = [
         numReviews: 0,
         size: ['S', 'M', 'L'],
         material: 'cotton',
-        BestSelling: false,
+        bestSelling: false,
     },
 
     {
@@ -213,7 +213,7 @@ const products = [
         numReviews: 0,
         size: ['S', 'M', 'L'],
         material: 'cotton',
-        BestSelling: false,
+        bestSelling: false,
     },
 
     {
@@ -228,7 +228,7 @@ const products = [
         numReviews: 0,
         size: ['S', 'M', 'L'],
         material: 'cotton',
-        BestSelling: false,
+        bestSelling: false,
     },
 
     {
@@ -243,7 +243,7 @@ const products = [
         numReviews: 0,
         size: ['S', 'M', 'L'],
         material: 'cotton',
-        BestSelling: false,
+        bestSelling: false,
     },
 
     {
@@ -258,7 +258,7 @@ const products = [
         numReviews: 0,
         size: ['S', 'M', 'L'],
         material: 'cotton',
-        BestSelling: false,
+        bestSelling: false,
     },
 
 

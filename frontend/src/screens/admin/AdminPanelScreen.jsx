@@ -31,11 +31,11 @@ const AdminPanelScreen = () => {
             <div className='lg:border-r max-lg:border-b col-span-1'>
                 <ul className='flex lg:flex-col flex-row gap-3 text-start text-[10px] overflow-x-auto mb-4 justify-center'>
                     {/*  COMPONENT LIST  */}
-                    <li className={`border rounded p-2 cursor-pointer ${activeComponent === 'ProductList' ? 'bg-gray-200' : ''}`} onClick={() => setActiveComponent('ProductList')}>Product List</li>
-                    <li className={`border rounded p-2 cursor-pointer ${activeComponent === 'OrderList' ? 'bg-gray-200' : ''}`} onClick={() => setActiveComponent('OrderList')}>Order List</li>
-                    <li className={`border rounded p-2 cursor-pointer ${activeComponent === 'UserList' ? 'bg-gray-200' : ''}`} onClick={() => setActiveComponent('UserList')}>User List</li>
-                    <li className={`border rounded p-2 cursor-pointer ${activeComponent ? '' : ''}`}>Product Edit</li>
-                    <li className={`border rounded p-2 cursor-pointer ${activeComponent ? '' : ''}`}>User Edit</li>
+                    <li className={`admin-list ${activeComponent === 'ProductList' ? 'bg-gray-200' : ''}`} onClick={() => setActiveComponent('ProductList')}>Product List</li>
+                    <li className={`admin-list ${activeComponent === 'OrderList' ? 'bg-gray-200' : ''}`} onClick={() => setActiveComponent('OrderList')}>Order List</li>
+                    <li className={`admin-list ${activeComponent === 'UserList' ? 'bg-gray-200' : ''}`} onClick={() => setActiveComponent('UserList')}>User List</li>
+                    {/* <li className={`border-t border-l border-b  p-2 cursor-pointer ${activeComponent ? '' : ''}`}>Product Edit</li>
+                    <li className={`border-t border-l border-b  p-2 cursor-pointer ${activeComponent ? '' : ''}`}>User Edit</li> */}
 
                 </ul>
             </div>

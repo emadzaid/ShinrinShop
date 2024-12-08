@@ -47,20 +47,20 @@ const ProfileScreen = () => {
                 <Title text1={'MY'} text2={'PROFILE'} className={'text-2xl my-2'} />
                 <div>
                     <label>Name </label>
-                    <input onChange={(e) => setName(e.target.value)} value={name} type="text" placeholder="Enter your name..." className="input input-bordered w-full " />
+                    <input onChange={(e) => setName(e.target.value)} value={name} type="text" placeholder="Enter your name..." className="input input-bordered w-full mt-2" />
                 </div>
                 <div>
                     <label>Email </label>
-                    <input onChange={(e) => setEmail(e.target.value)} value={email} type="email" placeholder="Enter your email...." className="input input-bordered w-full " />
+                    <input onChange={(e) => setEmail(e.target.value)} value={email} type="email" placeholder="Enter your email...." className="input input-bordered w-full mt-2" />
                 </div>
                 <div>
                     <label>Password </label>
-                    <input onChange={(e) => setPassword(e.target.value)} value={password} type="password" placeholder="Enter your password..." className="input input-bordered w-full " />
+                    <input onChange={(e) => setPassword(e.target.value)} value={password} type="password" placeholder="Enter your password..." className="input input-bordered w-full mt-2 " />
                 </div>
 
                 <div>
                     <label>Confirm Password </label>
-                    <input onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} type="password" placeholder="Re-Enter your password..." className="input input-bordered w-full" />
+                    <input onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} type="password" placeholder="Re-Enter your password..." className="input input-bordered w-full mt-2" />
                 </div>
 
                 <button type="submit" className="btn-main uppercase"> {udpatingProfileLoader ? (<Loader />) : ('Update') } </button>

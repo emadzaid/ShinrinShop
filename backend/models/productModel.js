@@ -25,8 +25,9 @@ const productSchema = new mongoose.Schema({
 
     category: {
         type: String,
-        enum: ['men', 'women'],
+        enum: ['men', 'women'], // Specifies allowed values
         required: true,
+        lowercase: true,
     },
 
     type: {
@@ -69,7 +70,7 @@ const productSchema = new mongoose.Schema({
         type: String,
     },
 
-    BestSelling: {
+    bestSelling: {
         type: Boolean,
         default: false,
     }

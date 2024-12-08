@@ -24,6 +24,10 @@
     .btn-main {
         @apply bg-neutral-700 hover:bg-neutral-600 text-white uppercase px-4 py-2 rounded transition
     }
+
+    .admin-list {
+        @apply border-t border-l border-b max-lg:border-r p-2 cursor-pointer
+    }
 }
 
 @layer utilities {

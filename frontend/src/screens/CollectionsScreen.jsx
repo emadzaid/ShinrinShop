@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {useGetProductsByCategoryQuery, useGetProductsByTypeAndCategoryQuery } from "../slices/productApiSlice";
+import {useGetWomenCollectionQuery, useGetMenCollectionQuery ,useGetProductsByTypeAndCategoryQuery } from "../slices/productApiSlice";
 
 import Title from "../components/Title";
 import Section from "../utils/Section";
@@ -12,7 +12,7 @@ import Message from "../components/Message";
 const CollectionsScreen = () => {
 
     const {category, type} = useParams();    
-    const {data:collection, isLoading:loadingcollection, refetch, error:collectionError} = type ? useGetProductsByTypeAndCategoryQuery({category, type}) : useGetProductsByCategoryQuery({category}) ;
+    const {data:collection, isLoading:loadingcollection, refetch, error:collectionError} = type ? useGetProductsByTypeAndCategoryQuery({category, type}) : category === 'women' ? useGetWomenCollectionQuery() : useGetMenCollectionQuery() ;
  
     //  Refetch when category/type changes (if needed)
     

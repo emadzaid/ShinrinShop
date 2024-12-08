@@ -49,11 +49,11 @@ const LoginScreen = () => {
             <form onSubmit={loginHandler} className="p-6 flex flex-col gap-8">
                 <div>
                     <label>Email </label>
-                    <input onChange={(e) => setEmail(e.target.value)} value={email} type="email" placeholder="Enter your email...." className="input input-bordered w-full max-w-xs" />
+                    <input onChange={(e) => setEmail(e.target.value)} value={email} type="email" placeholder="Enter your email...." className="input input-bordered w-full max-w-xs mt-2" />
                 </div>
                 <div>
                     <label>Password </label>
-                    <input onChange={(e) => setPassword(e.target.value)} value={password} type="password" placeholder="Enter your password...." className="input input-bordered w-full max-w-xs" />
+                    <input onChange={(e) => setPassword(e.target.value)} value={password} type="password" placeholder="Enter your password...." className="input input-bordered w-full max-w-xs mt-2" />
                 </div>
 
                 <button type="submit" className="btn-main"> {isLoading  ? (<Loader />) : ('Sign in')} </button>

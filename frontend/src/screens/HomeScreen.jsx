@@ -1,3 +1,7 @@
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import {useGetBestSellingProductsQuery} from '../slices/productApiSlice';
+
 import Hero from "../components/Hero";
 import Title from "../components/Title";
 import Section from "../utils/Section";
@@ -8,16 +12,16 @@ import NewsLetterBox from "../components/NewsLetterBox";
 import Container from "../utils/Container";
 import { FaRegPaperPlane, FaRegCreditCard, FaUndo, FaDiscourse   } from "react-icons/fa";
 
-import {useGetBestSellingProductsQuery} from '../slices/productApiSlice';
-
-import { Link } from "react-router-dom";
-
-
 export const HomeScreen = () => {
 
-  const {data:menCollection, isLoading: loadingMenCollection, error: menCollectionError} = useGetBestSellingProductsQuery({category: "men"});
-  const {data:womenCollection, isLoading: loadingWomenCollection, error: womenCollectionError} = useGetBestSellingProductsQuery({category: "women"})
+  const {data:menCollection, isLoading: loadingMenCollection, refetch:womenRefetch, error: menCollectionError} = useGetBestSellingProductsQuery({category: "men"});
+  const {data:womenCollection, isLoading: loadingWomenCollection, refetch:menRefetch, error: womenCollectionError} = useGetBestSellingProductsQuery({category: "women"})
   
+  useEffect(() => {
+    menRefetch();
+    womenRefetch();
+  }, [menCollection, womenCollection])
+
   return (
     <>
       
