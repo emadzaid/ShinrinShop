@@ -198,7 +198,7 @@ const ProductEditScreen = () => {
                         </div>
 
                         <div>
-                            <label className="mr-2">Product Images (Maximum 6 allowed) </label>
+                            <label className="mr-2">Product Images (Maximum 7 allowed) </label>
                             <input
                                 type="text"
                                 placeholder="Image URL"

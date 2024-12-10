@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
-import { useGetProductByIdQuery, useGetProductByIdOnlyQuery } from "../slices/productApiSlice";
+import { useGetProductByIdOnlyQuery } from "../slices/productApiSlice";
 import { useDispatch } from "react-redux";
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import Container from "../utils/Container";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -11,7 +12,6 @@ import Section from "../utils/Section";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import KimonoSizeGuideModel from "../components/KimonoSizeGuideModel";
 import RobeSizeGuideModel from "../components/RobeSizeGuideModel";
-
 import { addToCart } from "../slices/cartSlice";
 import { toast } from "react-toastify";
 
@@ -21,10 +21,8 @@ const ProductScreen = () => {
     const [qty, setQty] = useState(1);
     const [size, setSize] = useState('');
 
-    const { category, type, id: productId } = useParams();
-    // const {data:product, isLoading, error} = useGetProductByIdQuery({category, type, productId});
+    const { id: productId } = useParams();
     const {data:product, isLoading, error} = useGetProductByIdOnlyQuery(productId);
-
 
     const dispatch = useDispatch();
 
@@ -58,25 +56,23 @@ const ProductScreen = () => {
     <Container>
         {isLoading ? (<Loader />) : error ? (<Message error={error?.message || error?.data?.message} />) : (
             <>
-                {/* <h1>{product.name}</h1>
-                <p>{product.description}</p> */}
-                
+              
                 <div className="pt-10 trasnition-opacity ease-in duration-500 opacity-100">
                     <div>
                         <div className="grid md:grid-cols-2 grid-cols-1 gap-12">
                             {/* GRID 1 */}
                             <div className="flex sm:flex-row flex-col-reverse gap-4 justify-end overflow-hidden">
-                                <div className="max-sm:flex gap-3 items-end max-sm:overflow-x-scroll py-1">
+                                <div className="max-sm:flex gap-3 items-end max-sm:overflow-x-scroll p-1">
                                     {
                                         product.image.map((img, index) => {
-                                            return <img onClick={() => setImage(img)} src={img} key={index} alt={product.name} className={`${image  === img ? "ring-1 ring-black brightness-75" : ""} cursor-pointer sm:mb-3 sm:w-[80px] w-[20%] object-cover`}/>
+                                            return <LazyLoadImage onClick={() => setImage(img)} src={img} key={index} alt={product.name} className={`${image  === img ? "ring-1 ring-black brightness-75" : ""} cursor-pointer sm:mb-3 sm:w-[80px] w-[20%] object-cover`}/>
                                         })
                                     }
 
                                 </div>
                            
                                 <div className="sm:w-[500px] w-full ">
-                                    <img className="" src={image} alt={product.name}/>
+                                    <LazyLoadImage effect="blur" src={image} alt={product.name}/>
                                 </div>
                             </div>
 
@@ -133,7 +129,7 @@ const ProductScreen = () => {
                             <Section>
                                 <h2 className="sm:text-3xl text-xl mb-6 font-semibold uppercase">Product Details</h2>
                                 <h3 className="heading-tertiary mb-4 sm:text-xl text-lg">Why we love it?</h3>
-                                <p className="text-xl tracking-wide">{product.description}</p>
+                                <p className="text-xl tracking-wide leading-10">{product.description}</p>
                             </Section>
                         </div>
                     </div>

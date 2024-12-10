@@ -1,13 +1,16 @@
 import {Link} from 'react-router-dom';
-import { useGetAllProductsQuery, useAddNewProductMutation } from '../../slices/productApiSlice';
+import { useGetAllProductsQuery, useAddNewProductMutation, useDeleteProductMutation } from '../../slices/productApiSlice';
 import Loader from '../../components/Loader';
 import Message from '../../components/Message';
 import {FaEdit, FaRegTrashAlt, FaPlus} from 'react-icons/fa';
 import {toast} from 'react-toastify'
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const ProductListScreen = () => {
-    const {data:products, isLoading, refetch, error} = useGetAllProductsQuery();
+    const {data:products, isLoading, refetch, error} = useGetAllProductsQuery({keyword: {}});
     const [addNewProduct, {isLoading: addingProductLoader}] = useAddNewProductMutation();
+    const [deleteProduct] = useDeleteProductMutation();
 
     const createProductHandler = async () => {
         try {
@@ -20,6 +23,17 @@ const ProductListScreen = () => {
         }
   
     }
+
+    const deleteProductHandler = async (id) => {
+        if (window.confirm('Are you sure')) {
+          try {
+            await deleteProduct(id);
+            refetch();
+          } catch (err) {
+            toast.error(err?.data?.message || err.error);
+          }
+        }
+      };
 
   return (
     isLoading ? (<Loader />) : error ? (<Message error={`${error?.data?.message || error.error || 'An error occured'}`} />) : (
@@ -43,13 +57,13 @@ const ProductListScreen = () => {
                     <tbody>
                         {products.map((product, i) => 
                             <tr key={i}> 
-                                <td><img className='w-16' src={product.image[0]} /></td>
+                                <td><LazyLoadImage effect='blur' className='w-16' src={product.image[0]} /></td>
                                 <td>{product.name}</td>
                                 <td>{product.category}</td>
                                 <td>{product.type}</td>
                                 <td>${product.price}</td>
                                 <td><Link to={`/admin/products/${product._id}/edit`}><FaEdit /></Link></td>
-                                <td><FaRegTrashAlt /></td>
+                                <td><button onClick={() => deleteProductHandler(product._id)}><FaRegTrashAlt /></button></td>
                             </tr>
                         )}
                     </tbody>

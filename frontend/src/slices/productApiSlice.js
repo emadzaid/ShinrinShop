@@ -1,21 +1,30 @@
 import  apiSlice from "./apiSlice";
 import { PRODUCTS_URL, UPLOADS_URL } from "../Constants";
+import { retry } from "@reduxjs/toolkit/query";
 
 const productApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getAllProducts: builder.query({
-            query: () => ({
+            query: ({keyword}) => ({
                 url: `${PRODUCTS_URL}`,
                 method: 'GET',
+                params: { keyword },
             }), keepUnusedDataFor: 5,
+        }),
+
+        getAccessories: builder.query({
+            query: () => ({
+                url: `${PRODUCTS_URL}/accessories`,
+                method: 'GET',
+            }), keepUnusedDataFor: 5
         }),
 
         getWomenCollection: builder.query({
             query: () => ({
                 url: `${PRODUCTS_URL}/women`,
                 method: 'GET',
-            }), keepUnusedDataFor: 5,
-        }),
+            }), keepUnusedDataFor: 5, 
+        }) ,
 
         getMenCollection: builder.query({
             query: () => ({
@@ -46,7 +55,6 @@ const productApiSlice = apiSlice.injectEndpoints({
             })
         }),
 
-
         getBestSellingProducts: builder.query({
             query: ({category}) => ({
                 url: `${PRODUCTS_URL}/${category}/bestselling`,
@@ -76,8 +84,16 @@ const productApiSlice = apiSlice.injectEndpoints({
                 body: data,
             })
         }),
+
+        deleteProduct: builder.mutation({
+            query: (productId) => ({
+                url: `${PRODUCTS_URL}/${productId}`,
+                method: 'DELETE',
+            })
+        }),
+
     })
 });
 
-export const { useGetAllProductsQuery, useGetWomenCollectionQuery, useGetMenCollectionQuery, useGetProductByIdQuery, useGetProductsByTypeAndCategoryQuery, useGetBestSellingProductsQuery, useAddNewProductMutation, useGetProductByIdOnlyQuery, useUpdateProductMutation, useUploadFileMutation} = productApiSlice;
+export const { useGetAllProductsQuery, useGetWomenCollectionQuery, useGetMenCollectionQuery, useGetProductByIdQuery, useGetProductsByTypeAndCategoryQuery, useGetBestSellingProductsQuery, useAddNewProductMutation, useGetProductByIdOnlyQuery, useUpdateProductMutation, useUploadFileMutation, useGetAccessoriesQuery, useDeleteProductMutation} = productApiSlice;
 export default productApiSlice;

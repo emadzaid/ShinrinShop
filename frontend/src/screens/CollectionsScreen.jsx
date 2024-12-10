@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {useGetWomenCollectionQuery, useGetMenCollectionQuery ,useGetProductsByTypeAndCategoryQuery } from "../slices/productApiSlice";
+import {useGetWomenCollectionQuery, useGetMenCollectionQuery, useGetAccessoriesQuery, useGetProductsByTypeAndCategoryQuery } from "../slices/productApiSlice";
 
 import Title from "../components/Title";
 import Section from "../utils/Section";
@@ -12,14 +11,9 @@ import Message from "../components/Message";
 const CollectionsScreen = () => {
 
     const {category, type} = useParams();    
-    const {data:collection, isLoading:loadingcollection, refetch, error:collectionError} = type ? useGetProductsByTypeAndCategoryQuery({category, type}) : category === 'women' ? useGetWomenCollectionQuery() : useGetMenCollectionQuery() ;
- 
-    //  Refetch when category/type changes (if needed)
-    
-    useEffect(() => {
-      refetch();
-    }, [category, type]);
+    const {data:collection, isLoading:loadingcollection, error:collectionError} = type && category ? useGetProductsByTypeAndCategoryQuery({category, type}) : category === 'women' ? useGetWomenCollectionQuery() : category === 'men' ? useGetMenCollectionQuery() : useGetAccessoriesQuery();
 
+    console.log(loadingcollection)
     return (
     <Section className="sm:w-[90%] mx-auto">
         <Title text1={`${category}`} text2={`${type?.replace(/-/g, ' ') || 'Collection'}`} className={'sm:text-2xl text-lg uppercase mb-8'} />

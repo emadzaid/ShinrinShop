@@ -21,6 +21,7 @@ import MyOrderScreen from './screens/MyOrderScreen.jsx';
 import OrderScreen from './screens/OrderScreen.jsx';
 import PaymentScreen from './screens/PaymentScreen.jsx';
 import CollectionsScreen from './screens/CollectionsScreen.jsx';
+import SearchResultScreen from './screens/SearchResultScreen.jsx';
 
 import AdminPanelScreen from './screens/admin/AdminPanelScreen.jsx';
 import ProductListScreen from './screens/admin/ProductListScreen.jsx';
@@ -30,7 +31,8 @@ import ProductEditScreen from './screens/admin/ProductEditScreen.jsx';
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<App />}>
     <Route index={true} path='/' element={<HomeScreen />} />
-    
+    <Route path='/search/:keyword' element={<SearchResultScreen />} />
+
     <Route path="/collections/:category/:type/:id" element={<ProductScreen />} />
     <Route path="/collections/:category/:type" element={<CollectionsScreen />} />
     <Route path="/collections/:category" element={<CollectionsScreen />} />

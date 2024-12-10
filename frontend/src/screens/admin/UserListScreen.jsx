@@ -18,8 +18,8 @@ const UserListScreen = () => {
               <th>NAME</th>
               <th>EMAIL</th>
               <th>ADMIN</th>
-              <th>Edit</th>
-              <th>Delete</th>
+              {/* <th>Edit</th>
+              <th>Delete</th> */}
             </tr>
           </thead>
           <tbody>
@@ -30,8 +30,8 @@ const UserListScreen = () => {
               <th>{user.name}</th>
               <th>{user.email}</th>
               <th>{user.isAdmin ? 'Yes' : 'No'}</th>
-              <th><FaEdit /></th>
-              <th><FaRegTrashAlt /></th>
+              {/* <th><FaEdit /></th>
+              <th><FaRegTrashAlt /></th> */}
             </tr>
           )}
          

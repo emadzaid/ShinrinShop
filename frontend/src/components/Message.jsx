@@ -1,7 +1,7 @@
 
 const Message = ({varient = 'info', error, className}) => {
   return (
-    <div role="alert" className={`alert alert-${varient} ${className}`}>
+    <div role="alert" className={`alert alert-${varient} ${className} mt-2`}>
         <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 shrink-0 stroke-current"

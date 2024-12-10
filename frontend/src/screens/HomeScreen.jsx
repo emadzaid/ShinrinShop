@@ -11,6 +11,7 @@ import Message from "../components/Message";
 import NewsLetterBox from "../components/NewsLetterBox";
 import Container from "../utils/Container";
 import { FaRegPaperPlane, FaRegCreditCard, FaUndo, FaDiscourse   } from "react-icons/fa";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export const HomeScreen = () => {
 
@@ -94,7 +95,8 @@ export const HomeScreen = () => {
         <Section className="w-[80%] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="relative aspect-w-4 aspect-h-3">
-                <img
+                <LazyLoadImage
+                  effect="blur"
                   src="/images/Women-Collection.jpg"
                   className="w-full h-full object-cover"
                 />
@@ -109,7 +111,8 @@ export const HomeScreen = () => {
               </div>
 
               <div className="relative aspect-w-4 aspect-h-3">
-                <img
+                <LazyLoadImage
+                  effect="blur"
                   src="/images/Men-Collection.jpg"
                   className="w-full h-full object-cover"
                 />
@@ -124,7 +127,8 @@ export const HomeScreen = () => {
               </div>
 
               <div className="relative aspect-w-4 aspect-h-3">
-                <img
+                <LazyLoadImage
+                  effect="blur"
                   src="/images/Accessories-main.jpg"
                   className="w-full h-full object-cover"
                 />

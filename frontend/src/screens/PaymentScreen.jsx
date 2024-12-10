@@ -39,12 +39,12 @@ const PaymentScreen = () => {
       }, [errorPayPal, loadingPayPal, order, paypal, paypalDispatch]);
 
     // TESTING ONLY! REMOVE BEFORE PRODUCTION
-    async function onApproveTest() {
-      await payOrder({ orderId, details: { payer: {} } });
-      refetch();
-      navigate(`/orders/${order._id}`);
-      toast.success('Order is paid');
-    }
+    // async function onApproveTest() {
+    //   await payOrder({ orderId, details: { payer: {} } });
+    //   refetch();
+    //   navigate(`/orders/${order._id}`);
+    //   toast.success('Order is paid');
+    // }
 
       function onApprove(data, actions) {
         return actions.order.capture().then(async function (details) {
@@ -92,12 +92,12 @@ const PaymentScreen = () => {
                     <div className=" flex flex-col items-center justify-around py-4 h-[400px]">
 
                       {/* // THIS BUTTON IS FOR TESTING! REMOVE BEFORE PRODUCTION!  */}
-                      <button
+                      {/* <button
                         onClick={onApproveTest}
                         style={{ marginBottom: '10px' }}
                       >
                         Test Pay Order
-                      </button> 
+                      </button>  */}
 
                       <div className="sm:w-[400px] w-[300px] max-[370px]:w-[250px] mx-auto h-96 overflow-y-scroll no-scrollbar">
                         <div className="" >

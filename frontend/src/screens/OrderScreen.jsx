@@ -1,11 +1,11 @@
 import { useParams, Link } from "react-router-dom"
 import { useSelector } from "react-redux";
 import { useGetOrderByIdQuery } from "../slices/orderApiSlice"
-
-import Container from "../utils/Container";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import Timeline from "../components/Timeline";
+import {FaCheckCircle} from 'react-icons/fa'
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const OrderScreen = () => {
   const {id:orderId} = useParams();
@@ -28,7 +28,12 @@ const OrderScreen = () => {
           <>
           <h1 className="text-xl uppercase tracking-widest text-center my-8">Thank you for your order!</h1>
             <div className="bg-green-100 text-center px-4 py-2">
-              <h3 className="md:text-2xl text-lg mb-4 tracking-wide"> ORDER CONFIRMATION</h3>
+              
+              <div className="flex items-center justify-center mb-4 gap-3"> 
+                <FaCheckCircle className="md:text-2xl" /> 
+                <h3 className="md:text-2xl text-lg tracking-wide"> ORDER CONFIRMATION</h3>
+              </div>
+
               {/* <span className="block mb-4">{order._id}</span>  */}
               <span className="mb-4 block md:text-xl text-sm tracking-wide">{userInfo.name}, thank you for your order! </span>
               <p className="md:text-xl text-sm tracking-wide">We've recieved your order and will contact you as soon as your package is shipped. You can find your purchase information below.</p>
@@ -41,7 +46,7 @@ const OrderScreen = () => {
           <ul>
             {order.orderItems.map((x, i) => 
               <li key={i} className="flex items-center gap-4 mb-4 border-b pb-4">
-                  <img src={x.image[0]} className='rounded w-16 sm:w-20' />
+                  <LazyLoadImage effect="blur" src={x.image[0]} className='rounded w-16 sm:w-20' />
                   <div className="flex flex-col gap-1">
                     <span className="font-semibold"> {x.name}</span>
                     <span> Price: ${x.price}</span>

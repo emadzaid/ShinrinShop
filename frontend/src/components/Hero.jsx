@@ -1,10 +1,13 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import heroImage from '/images/Kimono-Collection-Banner_2400x.jpg';
+
 const Hero = () => {
-    const slides = ['../../public/images/Cherry-blossom-Japanese-kimono-robe.jpg', '../../public/images/Kimono-Collection-Banner_2400x.jpg']
 
     return (
-      <div className="flex flex-col sm:flex-row border border-gray-400 ">
+      <div className="flex flex-col sm:flex-row border border-gray-400">
         {/* Hero Left Side */}
-        <div className="w-full sm:w-1/2 flex items-center justify-center py-10 sm:py-0 bg-neutral-100/50">
+        <div className="w-full sm:w-1/2 flex items-center justify-center py-10 sm:py-0 bg-neutral-100/50 ">
           <div className="text-[#414141]">
             <div className="flex items-center gap-2 ">
               <p className="w-8 md:w-11 h-[2px] bg-[#414141]"></p>
@@ -19,11 +22,8 @@ const Hero = () => {
               <p className="w-8 md:w-11 h-[1px] bg-[#414141]"></p>
             </div>
           </div>
-        </div>
-  
-        {/* Hero Right Side */}
-  
-        <img src={slides[1]} alt="" className="w-full sm:w-1/2" />
+        </div>  
+        <LazyLoadImage src={heroImage} alt="hero-banner"  className="w-full sm:w-1/2" />
       </div>
     );
   };

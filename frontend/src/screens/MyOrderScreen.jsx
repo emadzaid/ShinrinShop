@@ -7,6 +7,8 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import Title from "../components/Title";
 
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const MyOrderScreen = () => {
 
@@ -30,7 +32,8 @@ const MyOrderScreen = () => {
                         <li key={i} className="border-y py-2 mb-4 flex lg:flex-row flex-col items-center justify-between">
                             <div className="flex flex-row gap-4 lg:w-[500px] truncate">
         
-                                <img
+                                <LazyLoadImage
+                                    effect="blur"
                                     src={item.image[0]}
                                     alt={item.name}
                                     className="w-16 sm:w-20"
@@ -69,9 +72,6 @@ const MyOrderScreen = () => {
 
                             </div>
 
-                            {/* <div>
-                                <Link to='/'> Track Order</Link>
-                            </div> */}
                         </li>)
                 )}
                 </ul>
