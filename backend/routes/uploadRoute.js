@@ -33,10 +33,10 @@ const upload = multer({
     fileFilter: (req, file, cb) => {
         checkFileType(file, cb);
     },
-    limits: { files: 6 },
+    limits: { files: 7 },
 });
 
-  router.post('/', upload.array('photos', 6), (req, res) => {
+  router.post('/', upload.array('photos', 7), (req, res) => {
    
     try {
 

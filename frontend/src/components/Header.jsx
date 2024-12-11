@@ -25,9 +25,15 @@ const Header = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const drawerCheckbox = document.getElementById('my-drawer-4');
-    if (drawerCheckbox) {
-      drawerCheckbox.checked = false; // Close the drawer on route change
+    const drawerCart = document.getElementById('drawer-cart');
+    const drawerNav = document.getElementById('drawer-side-nav');
+
+    if (drawerCart) {
+      drawerCart.checked = false; // Close the cart drawer on route change
+    }
+    if(drawerNav) {
+      drawerNav.checked = false; // Close the sidenav drawer on route change
+
     }
   }, [location]);
 
@@ -59,12 +65,12 @@ return (
           <SearchBox searchField={searchField} setSearchField={setSearchField} />
         {/* SERACH FIELD END  */}
 
-      <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+      <input id="drawer-side-nav"  type="checkbox" className="drawer-toggle" />
       <div className={`transition  ${searchField ? 'opacity-0' : 'opacity-1'}`}>
         {/* Navbar */}
         <div className="navbar justify-between border-b w-full h-24">
           <div className="flex-none lg:hidden">
-            <label htmlFor="my-drawer-3" aria-label="open sidebar" className="btn btn-square btn-ghost">
+            <label htmlFor="drawer-side-nav"aria-label="open sidebar" className="btn btn-square btn-ghost">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -177,10 +183,10 @@ return (
                 {/* CART DRAWER */}
 
                 <div className="drawer drawer-end z-[1]">
-                  <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+                  <input id="drawer-cart" type="checkbox" className="drawer-toggle" />
                   <div className="drawer-content">
                     {/* Page content here */}
-                    <label htmlFor="my-drawer-4" className="drawer-button cursor-pointer">
+                    <label htmlFor="drawer-cart" className="drawer-button cursor-pointer">
                       <svg
                       className="sm:h-8 h-6"
                       viewBox="0 0 24 24"
@@ -197,7 +203,7 @@ return (
                   </div>
 
                   <div className="drawer-side">
-                    <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+                    <label htmlFor="drawer-cart" aria-label="close sidebar" className="drawer-overlay"></label>
                     <ul className="p-4 bg-base-200 text-base-content min-h-full sm:w-96 w-[90%]">
                       <li className="border-b border-gray-300 mb-4"> <h3 className="text-2xl py-1">YOUR CART</h3> </li>
                       {cartItems.length > 0 ? (

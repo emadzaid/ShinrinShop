@@ -92,8 +92,22 @@ const productApiSlice = apiSlice.injectEndpoints({
             })
         }),
 
+        createReview: builder.mutation({
+            query: (data) => ({
+                url: `${PRODUCTS_URL}/${data.productId}/reviews`,
+                method: 'POST',
+                body: data,
+            })
+        }),
+
+        getRelatedProducts: builder.query({
+            query: (productId) => ({
+                url: `${PRODUCTS_URL}/${productId}/related`,
+                method: 'GET',
+            })
+        }),
     })
 });
 
-export const { useGetAllProductsQuery, useGetWomenCollectionQuery, useGetMenCollectionQuery, useGetProductByIdQuery, useGetProductsByTypeAndCategoryQuery, useGetBestSellingProductsQuery, useAddNewProductMutation, useGetProductByIdOnlyQuery, useUpdateProductMutation, useUploadFileMutation, useGetAccessoriesQuery, useDeleteProductMutation} = productApiSlice;
+export const { useGetAllProductsQuery, useGetWomenCollectionQuery, useGetMenCollectionQuery, useGetProductByIdQuery, useGetProductsByTypeAndCategoryQuery, useGetBestSellingProductsQuery, useAddNewProductMutation, useGetProductByIdOnlyQuery, useUpdateProductMutation, useUploadFileMutation, useGetAccessoriesQuery, useDeleteProductMutation, useCreateReviewMutation, useGetRelatedProductsQuery} = productApiSlice;
 export default productApiSlice;

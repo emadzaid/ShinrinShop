@@ -12,7 +12,6 @@ const OrderScreen = () => {
   const {data:order, isLoading, error} = useGetOrderByIdQuery(orderId)
 
   const {userInfo} = useSelector((state) => state.auth);
-  const {shippingAddress} = useSelector((state) => state.cart);
 
   return (
     isLoading ? (<Loader />) : error ? (<Message error={`${error?.data?.message || error.message || error.error}`} />) : (
@@ -85,11 +84,11 @@ const OrderScreen = () => {
        <div className="mt-8 md:w-1/2 mx-auto py-2">
         <h3 className="text-xl uppercase my-6">Shipping Address</h3>
         <ul className="md:text-lg text-sm tracking-widest">
-          <li className="border-b  py-2"> <strong className="">Address</strong>: {shippingAddress.address}</li>
-          <li className="border-b  py-2"> <strong> Country: </strong> {shippingAddress.country}</li>
-          <li className="border-b  py-2"> <strong> City: </strong> {shippingAddress.city}</li>
-          <li className="border-b  py-2"> <strong> Postal Code: </strong> {shippingAddress.postalCode}</li>
-          <li className="border-b  py-2"> <strong> Phone: </strong> {shippingAddress.phone}</li>
+          <li className="border-b  py-2"> <strong className="">Address</strong>: {order.shippingAddress.address}</li>
+          <li className="border-b  py-2"> <strong> Country: </strong> {order.shippingAddress.country}</li>
+          <li className="border-b  py-2"> <strong> City: </strong> {order.shippingAddress.city}</li>
+          <li className="border-b  py-2"> <strong> Postal Code: </strong> {order.shippingAddress.postalCode}</li>
+          <li className="border-b  py-2"> <strong> Phone: </strong> {order.shippingAddress.phone}</li>
           <li className="border-b  py-2"> <strong> Paid By: </strong> {order.paymentMethod }</li>
         </ul>
        </div>
