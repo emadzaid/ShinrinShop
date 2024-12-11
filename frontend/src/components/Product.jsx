@@ -34,7 +34,10 @@ const Product = ({ product }) => {
         </div>
         
         <p className="text-sm uppercase text-yellow-600">{product.countInStock === 0 ? 'Sold out' : ''}</p>
+        <p className="text-sm uppercase tracking-widest text-green-600">{product.bestSelling && product.countInStock !== 0  ? 'Best Selling!' : ''}</p>
+
         <span className="uppercase text-sm">{product.type}</span>
+    
         <p className=" mb-2 text-[15px] font-semibold">{product.name}</p>
         <span className="font-md">${product.price.toFixed(2)}</span>
       </Link>

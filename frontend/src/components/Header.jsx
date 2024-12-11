@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 
 import { useLogoutUserMutation } from "../slices/userApiSlice";
 import { logout } from "../slices/authSlice";
+import { emptyCart } from "../slices/cartSlice";
 
 import SearchBox from "./SearchBox";
 
@@ -45,7 +46,7 @@ const Header = () => {
     try {
       await logoutUserApiCall().unwrap();
       dispatch(logout());
-      // reset cart here
+      dispatch(emptyCart());
       navigate('/login')
 
     } catch (error) {
@@ -134,7 +135,7 @@ return (
               <li className='cursor-pointer'>
                 {userInfo ? (
 
-                  <div className="dropdown dropdown-hover  dropdown-end">
+                  <div className="dropdown dropdown-hover dropdown-end">
                     <div tabIndex={0} role="button" className="m-1 uppercase border-2 border-gray-500 rounded-full px-3 py-1">{userInfo.name[0]}</div>
                     <ul tabIndex={0} className="dropdown-content menu bg-base-200 rounded-box z-[1] w-52 p-2 shadow">
                       <li className="border-b uppercase tracking-widest"><Link to='/profile'> My Profile </Link></li>
@@ -238,7 +239,7 @@ return (
      
       </div>
       <div className="drawer-side z-[1]">
-        <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
+        <label htmlFor="drawer-side-nav" aria-label="close sidebar" className="drawer-overlay"></label>
         
         {/* Sidebar content here */}
         <ul className="menu bg-base-200 min-h-full sm:w-[50%] w-[90%] p-4">

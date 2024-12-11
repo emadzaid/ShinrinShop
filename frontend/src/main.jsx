@@ -27,6 +27,7 @@ import AdminPanelScreen from './screens/admin/AdminPanelScreen.jsx';
 import ProductListScreen from './screens/admin/ProductListScreen.jsx';
 import ProductEditScreen from './screens/admin/ProductEditScreen.jsx';
 
+import ScrollToTop from './utils/ScrollToTop.jsx';
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<App />}>
@@ -54,7 +55,6 @@ const router = createBrowserRouter(createRoutesFromElements(
       <Route path='/admin/productlist' element={<ProductListScreen />} />
       <Route path='/admin/products/:id/edit' element={<ProductEditScreen />} />
 
-
     </Route>
   </Route>
 ))
@@ -63,7 +63,9 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
       <PayPalScriptProvider deferLoading={true}>
-        <RouterProvider router={router} />
+        <RouterProvider router={router}>
+          <ScrollToTop /> {/* Wrap the RouterProvider with ScrollToTop */}
+        </RouterProvider>
       </PayPalScriptProvider>
     </Provider>
   </StrictMode>,

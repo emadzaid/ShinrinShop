@@ -3,29 +3,22 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import heroImage from '/images/Kimono-Collection-Banner_2400x.jpg';
 
 const Hero = () => {
+  return (
+    <div className="relative sm:bg-center bg-right bg-cover bg-no-repeat h-[500px] w-full mx-auto border-gray-400 bg-[url('/images/Kimono-Collection-Banner_2400x.jpg')]">
+      {/* Gradient Overlay for Better Contrast */}
+      <div className="absolute inset-0 bg-gradient-to-tl from-black opacity-80"></div>
 
-    return (
-      <div className="flex flex-col sm:flex-row border border-gray-400">
-        {/* Hero Left Side */}
-        <div className="w-full sm:w-1/2 flex items-center justify-center py-10 sm:py-0 bg-neutral-100/50 ">
-          <div className="text-[#414141]">
-            <div className="flex items-center gap-2 ">
-              <p className="w-8 md:w-11 h-[2px] bg-[#414141]"></p>
-              <p className="font-medium text-sm md:text-base ">OUR BESTSELLERS</p>
-            </div>
-            <h1 className="prata-regular text-3xl sm:py-3 lg:text-5xl leading-relaxed ">
-              {' '}
-              Latest Arrivals
-            </h1>
-            <div className="flex items-center gap-2">
-              <p className="font-semibold text-sm md:text-base ">SHOP NOW</p>
-              <p className="w-8 md:w-11 h-[1px] bg-[#414141]"></p>
-            </div>
-          </div>
-        </div>  
-        <LazyLoadImage src={heroImage} alt="hero-banner"  className="w-full sm:w-1/2" />
+      {/* Hero Content */}
+      <div className="relative flex flex-col justify-center items-center h-full text-center text-white px-6 md:px-12">
+        <h1 className="text-3xl md:text-5xl font-light leading-tight tracking-wider">
+          Explore Our Exquisite Kimono Collection
+        </h1>
+        <p className="text-lg md:text-xl mt-4 font-light">
+          Discover timeless pieces designed for elegance and comfort
+        </p>
+
       </div>
-    );
-  };
-  
+    </div>
+  );
+};
   export default Hero;

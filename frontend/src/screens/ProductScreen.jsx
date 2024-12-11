@@ -42,6 +42,14 @@ const ProductScreen = () => {
 
     const dispatch = useDispatch();
 
+    // Scroll to top when the component is mounted
+    useEffect(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth', // This ensures smooth scrolling
+        });
+      }, [productId]);
+      
     useEffect(() => {
         if(product) {
             setImage(product?.image[0]);
@@ -156,7 +164,7 @@ const ProductScreen = () => {
 
                         <div className="md:w-[85%] text-justify mx-auto">
                             <Section>
-                                <h2 className="sm:text-3xl text-xl mb-6 font-semibold uppercase">Product Details</h2>
+                            <Title text1={'Product'} text2={'Description'}  className={'sm:text-2xl text-lg mt-8'} />
                                 <h3 className="heading-tertiary mb-4 sm:text-xl text-lg">Why we love it?</h3>
                                 <p className="text-xl tracking-wide leading-10">{product.description}</p>
                             </Section>
