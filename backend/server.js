@@ -37,7 +37,7 @@ app.use('/uploads', express.static(path.join(_dirname, '/uploads')));
 
 app.get('/api/config/paypal', (req,res) => res.send({clientId: process.env.PAYPAL_CLIENT_ID }));
 
-if(process.env.NODE_ENV === 'Production') {
+if(process.env.NODE_ENV === 'production') {
     // set static folder
     app.use(express.static(path.join(_dirname, '/frontend/dist')));
     
