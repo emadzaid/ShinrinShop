@@ -2,6 +2,7 @@ const Order = require('../models/orderModel');
 const Product = require('../models/productModel');
 const asyncHandler = require('../middlwares/asyncHandler');
 const {calcPrice} = require('../utils/calcPrice');
+const sendEmailService = require('../utils/sendEmailService');
 
 // @description Place an order
 // @method POST /api/orders/
@@ -11,7 +12,7 @@ const placeOrder = asyncHandler(async (req,res) => {
     const {orderItems, shippingAddress, paymentMethod} = req.body;
 
      // Validate shippingAddress
-    const requiredShippingFields = ['address', 'city', 'postalCode', 'country', 'phone'];
+    const requiredShippingFields = ['address', 'city', 'postalCode', 'country', 'phone', 'email', 'name'];
     const missingFields = requiredShippingFields.filter(
         (field) => !shippingAddress || !shippingAddress[field]
     );
@@ -68,6 +69,15 @@ const placeOrder = asyncHandler(async (req,res) => {
         })
 
         const createdOrder = await order.save();
+
+        if (order.status === "Order Confirmed") {
+            try {
+                await sendEmailService(order);
+                console.log("Order confirmation email sent successfully");
+            } catch (error) {
+                console.error("Failed to send order confirmation email:", error.message);
+            }
+        }
         res.status(200).json(createdOrder);
     }
 

@@ -43,7 +43,7 @@ const OrderListScreen = () => {
                                 ))}
                             </select>
                                                         
-                            <p>Name: <span className='uppercase'>{x?.user?.name} </span> </p>
+                            <p>Name: <span className='uppercase'>{x?.shippingAddress.name} </span> </p>
                             <p>{x?.shippingAddress.address}</p>
                             <p>{x?.shippingAddress.country}, {x?.shippingAddress.city}, {x?.shippingAddress.postalCode} </p>
                         </div>

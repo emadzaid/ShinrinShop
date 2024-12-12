@@ -9,6 +9,7 @@ import { useCreateOrderMutation} from '../slices/orderApiSlice';
 import Container from '../utils/Container';
 import {toast} from 'react-toastify';
 import { FaPaypal, FaRegMoneyBillAlt  } from 'react-icons/fa';
+import Loader from '../components/Loader';
 
 const CheckoutScreen = () => {
   
@@ -18,8 +19,9 @@ const CheckoutScreen = () => {
   const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
   const [payment, setPayment] = useState('');
-
-  const {userInfo} = useSelector((state) => state.auth);
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  
   const cart = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
@@ -33,6 +35,8 @@ const CheckoutScreen = () => {
     setAddress(cart.shippingAddress.address || '');
     setPhone(cart.shippingAddress.phone || '');
     setPayment(cart.paymentMethod);
+    setEmail(cart.shippingAddress.email || '');
+    setName(cart.shippingAddress.name || '');
   }, [cart.shippingAddress]);
 
 
@@ -40,13 +44,13 @@ const CheckoutScreen = () => {
   
   const paymentHandler = async (e) => {
     e.preventDefault();
-    dispatch(updateShippingAddress({ country, city, postalCode, address, phone, payment }));
+    dispatch(updateShippingAddress({ country, city, postalCode, address, phone, email, payment, name }));
     dispatch(updatePaymentMethod(payment));
 
     try {
       const res = await createOrder({
         orderItems: cart.cartItems,
-        shippingAddress: { country, city, postalCode, address, phone },
+        shippingAddress: { country, city, postalCode, address, phone, email, name },
         paymentMethod: payment,
       }).unwrap();
 
@@ -64,9 +68,9 @@ const CheckoutScreen = () => {
       <div className='grid grid-cols-1 md:grid-cols-2'>
         <div className='flex flex-col gap-4 p-4 mx-auto overflow-y-scroll no-scrollbar max-h-screen order-2 md:order-1'>
 
-        <h3 className='text-xl font-semibold'>Contact</h3>
+        <h3 className='text-xl font-semibold'>Email</h3>
           <div className='mb-4'>
-              <input readOnly type="text" value={userInfo.email} placeholder="Contact" className="input input-bordered w-full text-gray-600 italic" />
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="youremail@gmail.com" className="input input-bordered w-full text-gray-600 italic" />
           </div>
 
           
@@ -78,7 +82,7 @@ const CheckoutScreen = () => {
                 </div>
 
                 <div className='flex'>
-                    <input readOnly type="text" value={userInfo.name} placeholder="First Name" className="input input-bordered w-full text-gray-600 italic capitalize" />
+                    <input value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="First Name" className="input input-bordered w-full text-gray-600 italic capitalize" />
                 </div>
 
                 <div>
@@ -119,7 +123,7 @@ const CheckoutScreen = () => {
                 </label>
               </div>
 
-              <button type='submit' className='btn-main w-full rounded mt-6'> PlACE ORDER</button> 
+              <button type='submit' className='btn-main w-full rounded mt-6'> {createOrderLoading ? (<Loader />) : ('PLACE ORDER')}</button> 
             </form>
 
 
