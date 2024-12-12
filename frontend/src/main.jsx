@@ -10,7 +10,7 @@ import {PayPalScriptProvider} from '@paypal/react-paypal-js'
 import AdminRoute from './components/AdminRoute.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
 
-import HomeScreen from './Screens/HomeScreen.jsx';
+import HomeScreen from './screens/HomeScreen.jsx';
 import ProductScreen from './screens/ProductScreen.jsx';
 import LoginScreen from './screens/LoginScreen.jsx';
 import RegisterScreen from './screens/RegisterScreen.jsx';
