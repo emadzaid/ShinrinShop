@@ -25,11 +25,9 @@ const sendEmailService = async (order) => {
         <hr style="border: 1px solid #ccc; width: 80%; margin: 20px auto;" />
         
         <p style="font-size: 18px; color: #000;">Hey, ${order.shippingAddress.name}</p>
-        <p style="font-size: 16px; color: #000;">We're happy to let you know that your order has been <strong>${order.status}</strong>!</p>
+        <p style="font-size: 16px; color: #000;">We're happy to let you know that your order has been <strong>confirmed</strong>!</p>
         
         <p style="font-size: 16px; color: #000;">Please do not hesitate to give us a call on <strong>+92 123 456 789</strong> or send an email to <a href="mailto:contact@shinrinshop.com" style="color: #000;">contact@shinrinshop.com</a> if you have any questions at all.</p>
-        
-        <br />
         
         <p style="font-size: 16px; color: #000;">Thanks,</p>
         <p style="font-size: 16px; font-weight: bold; color: #000;">ShinrinShop</p>
@@ -62,7 +60,7 @@ const sendEmailService = async (order) => {
         
         <hr style="border: 1px solid #ccc; width: 80%; margin: 20px auto;" />
         
-        <p style="font-size: 16px; color: #000;"><strong>Total Amount:</strong> $${order.totalPrice}</p>
+        <p style="font-size: 16px; text-align: center; color: #000;"><strong>Total Amount:</strong> $${order.totalPrice}</p>
       </div>
     `
   };

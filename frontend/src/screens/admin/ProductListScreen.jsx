@@ -40,7 +40,7 @@ const ProductListScreen = () => {
 
             <div className='overflow-auto'>
                 <button onClick={createProductHandler} className='btn-main text-[10px] my-4 flex items-center gap-1'>{addingProductLoader ? (<Loader />) : ('Add New Product')}<FaPlus /> </button>
-                <table className="table">
+                <table className="table ">
                     {/* head */}
                     <thead>
                         <tr>

@@ -24,7 +24,7 @@ const MyOrderScreen = () => {
     <Container>
         <Title text1={'MY'} text2={'ORDERS'} className={'text-2xl my-2'} />
         {loadingOrders ? (<Loader />) : ordersError ? (<Message error={ordersError?.message || ordersError?.data?.message || "An error occurred"} />) : (
-            <div className="lg:w-[75%] mx-auto py-6">
+            <div className="lg:w-[75%] mx-auto py-6 px-4">
                 <p className="text-end text-lg mb-4"><strong>{orders.reduce((a, x) => a + x.orderItems.length, 0)}</strong> orders found</p>
                 <ul>
                     {orders.map((order) => 
@@ -33,13 +33,13 @@ const MyOrderScreen = () => {
                             <div className="flex flex-row gap-4 lg:w-[500px] truncate">
         
                                 <LazyLoadImage
-                                    effect="blur"
+                                    
                                     src={item.image[0]}
                                     alt={item.name}
                                     className="w-16 sm:w-20"
                                 />
                                 <div className="">
-                                    <p className="font-semibold">{item.name}  </p>
+                                    <p className="font-semibold w-[250px] truncate">{item.name}  </p>
                                     <div className="flex flex-row gap-3">
                                         <p>${item.price}</p>
                                         <p>Quantity: {item.qty}</p>
