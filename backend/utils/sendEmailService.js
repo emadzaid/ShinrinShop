@@ -18,13 +18,13 @@ const sendEmailService = async (order) => {
       to: order.shippingAddress.email, // Email of the person who placed the order
       subject: "Order Confirmation",
       html: `
-      <div style="text-align: center; font-family: Arial, sans-serif; color: #000;">
-        <h1 style="font-size: 36px; margin: 0; color: #000;">SHINRINSHOP</h1>
-        <h2 style="font-size: 20px; margin: 5px 0; color: #000;">ORDER STATUS</h2>
+      <div style="font-family: Arial, sans-serif; color: #000;">
+        <h1 style="font-size: 36px; text-align: center; margin: 0; color: #000;">SHINRINSHOP</h1>
+        <h2 style="font-size: 20px; text-align: center; margin: 5px 0; color: #000;">ORDER STATUS</h2>
         
         <hr style="border: 1px solid #ccc; width: 80%; margin: 20px auto;" />
         
-        <p style="font-size: 18px; color: #000;">Hey, ${order.shippingAddress.name},</p>
+        <p style="font-size: 18px; color: #000;">Hey, ${order.shippingAddress.name}</p>
         <p style="font-size: 16px; color: #000;">We're happy to let you know that your order has been <strong>${order.status}</strong>!</p>
         
         <p style="font-size: 16px; color: #000;">Please do not hesitate to give us a call on <strong>+92 123 456 789</strong> or send an email to <a href="mailto:contact@shinrinshop.com" style="color: #000;">contact@shinrinshop.com</a> if you have any questions at all.</p>

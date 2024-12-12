@@ -22,7 +22,8 @@
     "server": "nodemon backend/server.js",
     "dev": "concurrently \"npm run client\" \"npm run server\"",
     "data:import": "node backend/seeder.js",
-    "data:destroy": "node backend/seeder.js -d"
+    "data:destroy": "node backend/seeder.js -d",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "name": "shinrinshop-v1",
   "version": "1.0.0",

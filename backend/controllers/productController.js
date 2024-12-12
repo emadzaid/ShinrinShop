@@ -235,9 +235,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 const getRelatedProducts = asyncHandler(async (req, res) => {
 
     const { id } = req.params;
-    console.log(id)
     const product = await Product.findById(id); // Fetch the specific product by ID
-    console.log(product)
     if (product) {
       // Find related products based on matching category or type, excluding the current product
       const relatedProducts = await Product.find({
