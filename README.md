@@ -45,8 +45,10 @@ The website is live at [shinrinshop.com](https://shinrinshop.onrender.com/)
 + Product reviews and ratings
 + Product sorting based on price or best selling
 + Category based products
-+ Best Selling Products
++ Best selling products
 + Product search feature
++ Multiple product images
++ Related products
 + User profile with orders
 + Admin product management
 + Admin user management
@@ -55,4 +57,73 @@ The website is live at [shinrinshop.com](https://shinrinshop.onrender.com/)
 + Checkout process (shipping, payment method, etc)
 + PayPal / credit card integration
 + Database seeder (products & users)
-  
+
+## Usage
+
++ Create a MongoDB database and obtain your `MongoDB URI` - [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register)
++ Create a PayPal account and obtain your `Client ID` - [PayPal Developer](https://developer.paypal.com/home/)
+
+### Env Variables
+
+Rename the `.env.example` file to `.env` and add the following
+
+```
+NODE_ENV = development
+MONGO_URI = your mongodb uri
+JWT_SECRET_KEY = 'abc123'
+PAYPAL_CLIENT_ID = your paypal client id
+EMAIL_USER = your email
+EMAIL_PASS = your email passkey
+```
+
+Change the JWT_SECRET_KEY to what you want
+
+### Install Dependencies (frontend & backend)
+
+```
+npm install
+cd frontend
+npm install
+```
+
+### Run
+
+```
+# Run frontend (:5173) & backend (:8000)
+npm run dev
+
+# Run backend only
+npm run server
+```
+
+### Build & Deploy
+
+```
+# Create frontend prod build
+cd frontend
+npm run build
+```
+
+### Seed Database
+
+You can use the following commands to seed the database with some sample users and products as well as destroy all data
+
+```
+# Import data
+npm run data:import
+
+# Destroy data
+npm run data:destroy
+```
+
+```
+Sample User Logins
+
+admin@email.com (Admin)
+123456
+
+emad@gmail.com (Customer)
+123
+
+```
+
